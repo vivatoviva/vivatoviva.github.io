@@ -548,7 +548,7 @@
                 
               
 
-              <time title="创建时间：2018-08-27 01:43:00 / 修改时间：01:12:16" itemprop="dateCreated datePublished" datetime="2018-08-27T01:43:00+08:00">2018-08-27</time>
+              <time title="创建时间：2018-08-27 01:43:00 / 修改时间：01:24:35" itemprop="dateCreated datePublished" datetime="2018-08-27T01:43:00+08:00">2018-08-27</time>
             
             
             
@@ -616,75 +616,14 @@
 
       
         
-          
-            <a id="more"></a>
-<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><h4 id="属性选项"><a href="#属性选项" class="headerlink" title="属性选项"></a>属性选项</h4><ul>
-<li>expires和Max-Age</li>
-</ul>
-<blockquote>
-<p>cookie失效时间，为GMT格式，通过new Date().toUTCString()获取，如果没有显式设置，则称之为会话cookie，在浏览器关闭的时候清除</p>
-</blockquote>
-<ul>
-<li>domain和path</li>
-</ul>
-<blockquote>
-<p>domain为域名，path为路径，两者加起来构成url，domain和path一起限制cookie能被那些url访问，首先判断的是domain，如果没有设置这两个值，将会使用默认值，domain设置为该cookie的网页所在的域名，path默认为该cookie所在的目录</p>
-</blockquote>
-<ul>
-<li>secure</li>
-</ul>
-<blockquote>
-<p>用来设置cookie只有在确定的安全请求才能发出去，当请求是https或者其他安全协议的时候，包含secure的请求才能发送至服务器，如果想在客户端通过js设置secure的cookie的时候，必须保证网页在https的协议下，在http协议的网页是不能设置成功的</p>
-</blockquote>
-<ul>
-<li>httpOnly</li>
-</ul>
-<blockquote>
-<p>这个设置是设置的cookie能否通过js进行访问，这个设置只能在服务器端进行设置，为了保证安全，可以有效防止xss攻击</p>
-</blockquote>
-<h4 id="如何设置cookie？"><a href="#如何设置cookie？" class="headerlink" title="如何设置cookie？"></a>如何设置cookie？</h4><h5 id="服务器端进行设置"><a href="#服务器端进行设置" class="headerlink" title="服务器端进行设置"></a>服务器端进行设置</h5><blockquote>
-<p>服务通过response header 中的Set-Cookie进行设置，如果需要设置多个cookie，需要分别设置多个Set-Cookie,通过服务器可以设置 expires、domain、path、secure、HttpOnly</p>
-</blockquote>
-<h5 id="客户端进行设置"><a href="#客户端进行设置" class="headerlink" title="客户端进行设置"></a>客户端进行设置</h5><blockquote>
-<p>通过document.cookie进行设置，同样设置多个cookie需要重复执行document.cookie，通过js可以设置 expires、domain、path、secure（需要在https才可设置成功）</p>
-</blockquote>
-<p><code>document.cookie=&quot;age=12; expires=Thu, 26 Feb 2116 11:50:25 GMT; domain=sankuai.com; path=/&quot;;</code></p>
-<h4 id="cookie进行编码"><a href="#cookie进行编码" class="headerlink" title="cookie进行编码"></a>cookie进行编码</h4><blockquote>
-<p>cookie其实是个字符串，但这个字符串中逗号、分号、空格被当做了特殊符号。所以当cookie的 key 和 value 中含有这3个特殊字符时，需要对其进行额外编码，一般会用escape进行编码，读取时用unescape进行解码；可以尝试escape(‘哈哈，genluo’)输出什么</p>
-</blockquote>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ul>
-<li>只有当domain、path、name都相同的cookie才能覆盖</li>
-<li>domain设置带点的时候，任何 subdomain 都可以访问，包括父 domain，当不带点的时候，只有完全一样的域名才能访问</li>
-<li>当通过ip进行访问的时候，domain为当前ip</li>
-</ul>
-<h1 id="locaStorage"><a href="#locaStorage" class="headerlink" title="locaStorage"></a>locaStorage</h1><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
-<li>生命周期：持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。</li>
-<li>存储的信息在同一域中是共享的。</li>
-<li>当本页操作（新增、修改、删除）了localStorage的时候，本页面不会触发storage事件,但是别的页面会触发storage事件。</li>
-<li>大小：据说是5M（跟浏览器厂商有关系）</li>
-<li>在非IE下的浏览中可以本地打开。IE浏览器要在服务器中打开。</li>
-<li>localStorage本质上是对字符串的读取，如果存储内容多的话会消耗内存空间，会导致页面变卡<br>  localStorage受同源策略的限制</li>
-</ul>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>window.localStorage.setItem(key, value)</li>
-<li>window.localStorage.getItem(key,value)</li>
-<li>window.localStorage.removeItem(key)</li>
-<li>window.localStorage.clear()</li>
-<li>window.localStorage 遍历可以使用</li>
-</ul>
-<h4 id="事件storage"><a href="#事件storage" class="headerlink" title="事件storage"></a>事件storage</h4><p>当storage发生改变的时候进行触发，事件的回调函数中有一个参数是event，提供了一些实用属性，例如key、oldValue、newValue、uurl/uri</p>
-<h1 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h1><h4 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h4><blockquote>
-<p>用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储。也就是说只要这个浏览器窗口没有关闭，即使刷新页面或进入同源另一页面，数据仍然存在。关闭窗口后，sessionStorage即被销毁，或者在新窗口打开同源的另一个页面，sessionStorage也是没有的。</p>
-</blockquote>
-<h4 id="共享"><a href="#共享" class="headerlink" title="共享"></a>共享</h4><p>比localStorage更加严格，不仅要求协议、主机名、端口外，还要求在同一窗口（也就是浏览器的标签页）下</p>
-<p><a href="https://segmentfault.com/a/1190000012578794" target="_blank" rel="noopener">sf.gg总结的前端发存储</a></p>
-<h1 id="其他的几种存储（不常用）"><a href="#其他的几种存储（不常用）" class="headerlink" title="其他的几种存储（不常用）"></a>其他的几种存储（不常用）</h1><ul>
-<li>Web Sql Database<br>因为web标准已经放弃此种方式，所以不做深入讨论</li>
-<li>indexedDB<br><a href="https://juejin.im/post/5b09a641f265da0dcd0b674f" target="_blank" rel="noopener">indexDB 掘金</a><br><a href="https://juejin.im/post/59013d2c0ce46300614ebe70" target="_blank" rel="noopener">html5 进阶 - indexedDB</a></li>
-</ul>
-<p><img src="http://oquq74tfk.bkt.clouddn.com/18-8-21/2456233.jpg" alt=""></p>
-
-          
+          <p>最近做项目遇见权限控制，主要使用了缓存来记录用户权限，后面有时间整理下了前端的几种存储方式，主要有 cookie、storage</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/27/前端存储md/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1855,6 +1794,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Genluo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Genluo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/" itemprop="url">
+                  浏览器同源策略及规避Ajax中jsonp跨域解决方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-27 01:08:29 / 修改时间：01:25:45" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
+            
+            
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/" class="leancloud_visitors" data-flag-title="浏览器同源策略及规避Ajax中jsonp跨域解决方案">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>了解下浏览器的同源策略，并且理解下jsonp的跨域解决方案</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/大一总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2025,191 +2137,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/26/自动登录最佳实践/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Genluo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Genluo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/26/自动登录最佳实践/" itemprop="url">
-                  自动登录的实现方式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-26 08:43:00" itemprop="dateCreated datePublished" datetime="2018-08-26T08:43:00+08:00">2018-08-26</time>
-            
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-08-27 01:10:42" itemprop="dateModified" datetime="2018-08-27T01:10:42+08:00">2018-08-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/26/自动登录最佳实践/" class="leancloud_visitors" data-flag-title="自动登录的实现方式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近在做crm系统的时候使用antd-pro有一个自动登录的功能，当时不知道怎么实现，以为antdh-pro做了封装，后面被学长问道然后再去看代码，发现antd-pro压根没有实现自动登录，由于时间比较紧，自己将这个需求放置二期进行开发，这几天学习了一些自动登录的实现方式，在这篇博文进行总结下这种实现方式</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/26/自动登录最佳实践/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2261,7 +2188,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
