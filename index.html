@@ -365,13 +365,6 @@
 
               <time title="创建时间：2018-08-26 22:34:41" itemprop="dateCreated datePublished" datetime="2018-08-26T22:34:41+08:00">2018-08-26</time>
             
-
-            
-            &nbsp; | &nbsp;
-            <span id="/2018/08/26/Observer模式/"class="leancloud_visitors" data-flag-title="js设计模式-观察者模式（Observer和Pub/Sub）">
-                    &nbsp;post.visitors
-                    </span>
-            
             
             
               
@@ -558,13 +551,6 @@
 
               <time title="创建时间：2018-08-26 22:34:41" itemprop="dateCreated datePublished" datetime="2018-08-26T22:34:41+08:00">2018-08-26</time>
             
-
-            
-            &nbsp; | &nbsp;
-            <span id="/2018/08/26/md插入图片/"class="leancloud_visitors" data-flag-title="博文的图片问题">
-                    &nbsp;post.visitors
-                    </span>
-            
             
             
               
@@ -750,13 +736,6 @@
               
 
               <time title="创建时间：2018-08-26 22:34:41" itemprop="dateCreated datePublished" datetime="2018-08-26T22:34:41+08:00">2018-08-26</time>
-            
-
-            
-            &nbsp; | &nbsp;
-            <span id="/2018/08/26/正则表达式/"class="leancloud_visitors" data-flag-title="正则表达式">
-                    &nbsp;post.visitors
-                    </span>
             
             
             
@@ -946,13 +925,6 @@
               
 
               <time title="创建时间：2018-08-26 22:34:41" itemprop="dateCreated datePublished" datetime="2018-08-26T22:34:41+08:00">2018-08-26</time>
-            
-
-            
-            &nbsp; | &nbsp;
-            <span id="/2018/08/26/一、一切都是对象？/"class="leancloud_visitors" data-flag-title="原型、原型链">
-                    &nbsp;post.visitors
-                    </span>
             
             
             
@@ -1144,13 +1116,6 @@
 
               <time title="创建时间：2018-08-26 22:34:41" itemprop="dateCreated datePublished" datetime="2018-08-26T22:34:41+08:00">2018-08-26</time>
             
-
-            
-            &nbsp; | &nbsp;
-            <span id="/2018/08/26/设计思路/"class="leancloud_visitors" data-flag-title="3D云标签/3D旋转链接设计思路（简单实现）">
-                    &nbsp;post.visitors
-                    </span>
-            
             
             
               
@@ -1335,13 +1300,6 @@
               
 
               <time title="创建时间：2018-08-26 22:34:40" itemprop="dateCreated datePublished" datetime="2018-08-26T22:34:40+08:00">2018-08-26</time>
-            
-
-            
-            &nbsp; | &nbsp;
-            <span id="/2018/08/26/大一总结/"class="leancloud_visitors" data-flag-title="大一总结">
-                    &nbsp;post.visitors
-                    </span>
             
             
             
@@ -1528,13 +1486,6 @@
 
               <time title="创建时间：2018-08-26 22:34:40" itemprop="dateCreated datePublished" datetime="2018-08-26T22:34:40+08:00">2018-08-26</time>
             
-
-            
-            &nbsp; | &nbsp;
-            <span id="/2018/08/26/toc- 记录生活（一）/"class="leancloud_visitors" data-flag-title="生活随笔">
-                    &nbsp;post.visitors
-                    </span>
-            
             
             
               
@@ -1718,13 +1669,6 @@
 
               <time title="创建时间：2018-08-26 18:17:23" itemprop="dateCreated datePublished" datetime="2018-08-26T18:17:23+08:00">2018-08-26</time>
             
-
-            
-            &nbsp; | &nbsp;
-            <span id="/2018/08/26/hello-world/"class="leancloud_visitors" data-flag-title="Hello World">
-                    &nbsp;post.visitors
-                    </span>
-            
             
             
           </span>
@@ -1879,13 +1823,6 @@
               
 
               <time title="创建时间：2018-08-01 15:15:00" itemprop="dateCreated datePublished" datetime="2018-08-01T15:15:00+08:00">2018-08-01</time>
-            
-
-            
-            &nbsp; | &nbsp;
-            <span id="/2018/08/01/Linux软件安装/"class="leancloud_visitors" data-flag-title="linux：centOS 程序安装">
-                    &nbsp;post.visitors
-                    </span>
             
             
             
@@ -2071,13 +2008,6 @@
               
 
               <time title="创建时间：2018-07-29 15:15:00 / 修改时间：11:46:22" itemprop="dateCreated datePublished" datetime="2018-07-29T15:15:00+08:00">2018-07-29</time>
-            
-
-            
-            &nbsp; | &nbsp;
-            <span id="/2018/07/29/linux权限管理/"class="leancloud_visitors" data-flag-title="linux权限管理，实例：创建共享目录">
-                    &nbsp;post.visitors
-                    </span>
             
             
             
@@ -2916,92 +2846,6 @@
 
   
 
-  
-
-
-  
-  <!-- custom analytics part create by xiamo -->
-<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-<script>AV.initialize("ejARfLJyRPie3F2fgmhWiqhb-gzGzoHsz", "uae7MGQ7caGIE2W6pE5mvqSL");</script>
-<script>
-function showTime(Counter) {
-	var query = new AV.Query(Counter);
-	$(".leancloud_visitors").each(function() {
-		var url = $(this).attr("id").trim();
-		query.equalTo("url", url);
-		query.find({
-			success: function(results) {
-				if (results.length == 0) {
-					var content = '0 ' + $(document.getElementById(url)).text();
-					$(document.getElementById(url)).text(content);
-					return;
-				}
-				for (var i = 0; i < results.length; i++) {
-					var object = results[i];
-					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
-					$(document.getElementById(url)).text(content);
-				}
-			},
-			error: function(object, error) {
-				console.log("Error: " + error.code + " " + error.message);
-			}
-		});
-
-	});
-}
-
-function addCount(Counter) {
-	var Counter = AV.Object.extend("Counter");
-	url = $(".leancloud_visitors").attr('id').trim();
-	title = $(".leancloud_visitors").attr('data-flag-title').trim();
-	var query = new AV.Query(Counter);
-	query.equalTo("url", url);
-	query.find({
-		success: function(results) {
-			if (results.length > 0) {
-				var counter = results[0];
-				counter.fetchWhenSave(true);
-				counter.increment("time");
-				counter.save(null, {
-					success: function(counter) {
-						var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
-						$(document.getElementById(url)).text(content);
-					},
-					error: function(counter, error) {
-						console.log('Failed to save Visitor num, with error message: ' + error.message);
-					}
-				});
-			} else {
-				var newcounter = new Counter();
-				newcounter.set("title", title);
-				newcounter.set("url", url);
-				newcounter.set("time", 1);
-				newcounter.save(null, {
-					success: function(newcounter) {
-					    console.log("newcounter.get('time')="+newcounter.get('time'));
-						var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
-						$(document.getElementById(url)).text(content);
-					},
-					error: function(newcounter, error) {
-						console.log('Failed to create');
-					}
-				});
-			}
-		},
-		error: function(error) {
-			console.log('Error:' + error.code + " " + error.message);
-		}
-	});
-}
-$(function() {
-	var Counter = AV.Object.extend("Counter");
-	if ($('.leancloud_visitors').length == 1) {
-		addCount(Counter);
-	} else if ($('.post-title-link').length > 1) {
-		showTime(Counter);
-	}
-}); 
-</script>
   
 
 
