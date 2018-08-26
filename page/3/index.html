@@ -108,9 +108,10 @@
 
 
 
-  <meta property="og:type" content="website">
+  <meta name="keywords" content="vivatoviva">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Genluo">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:url" content="http://blogoog.com/page/3/index.html">
 <meta property="og:site_name" content="Genluo">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -121,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/3/"/>
+  <link rel="canonical" href="http://blogoog.com/page/3/"/>
 
 
 
@@ -218,7 +219,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -226,7 +227,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
 
       
@@ -277,10 +278,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/16/float/">
+    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2017/05/16/定位/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ligen">
+      <meta itemprop="name" content="Genluo">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -296,8 +297,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/16/float/" itemprop="url">
-                  float
+                <a class="post-title-link" href="/2017/05/16/定位/" itemprop="url">
+                  定位问题
                 </a>
               
             
@@ -316,14 +317,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2017-05-16 08:55:29" itemprop="dateCreated datePublished" datetime="2017-05-16T08:55:29+08:00">2017-05-16</time>
+              <time title="Post created: 2017-05-16 08:55:29" itemprop="dateCreated datePublished" datetime="2017-05-16T08:55:29+08:00">2017-05-16</time>
             
 
             
@@ -340,7 +341,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2017-06-07 12:43:27" itemprop="dateModified" datetime="2017-06-07T12:43:27+08:00">2017-06-07</time>
+                <time title="Updated at: 2017-06-05 16:20:37" itemprop="dateModified" datetime="2017-06-05T16:20:37+08:00">2017-06-05</time>
               
             
           </span>
@@ -354,7 +355,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
@@ -392,24 +393,15 @@
 
       
         
-          <p>####<strong>常见的float布局及其原理分析</strong><br>CSS position属性进行布局，或者使用CSSfloat属性布局。前者适合布局首页，因为首页上的内容往往可以完全控制。后者适合布局模板，模板中填充的内容你没法控制<br>在实践过程中，领悟到一点，那就是，<strong>div是按照在HTML文档中的顺序进行渲染的。也就是说，我们先决定前一个div在页面上的位置，然后再决定后一个div的位置</strong>。也许这一点是显而易见的，但它确实是理解Float布局的关键</p>
+          <h1 id="定位问题"><a href="#定位问题" class="headerlink" title="定位问题"></a>定位问题</h1><hr>
 <blockquote>
-<h5 id="当一个元素具有float属性时，浏览器会怎样做？我想是这样的："><a href="#当一个元素具有float属性时，浏览器会怎样做？我想是这样的：" class="headerlink" title="当一个元素具有float属性时，浏览器会怎样做？我想是这样的："></a>当一个元素具有float属性时，浏览器会怎样做？我想是这样的：</h5></blockquote>
-<ul>
-<li>渲浏览器探测到这个元素具有float:right属性，</li>
-<li>根据其内容限制了div的宽度（而不是尽量占满父元素宽度）</li>
-<li>脱离文档流，并选择这样的位置进行渲染：<ul>
-<li>首先要在文档流没有占领的区域，否则就有可能覆盖已经渲染的文档。</li>
-<li>其次，也没有其他float元素。</li>
-<li>最后，渲染之后不会影响文档流。文档流该怎么走还怎么走，但是文档中的内容会自动绕开float元素。</li>
-</ul>
-</li>
-</ul>
-<hr>
+<p>本文引用地址<a href="http://www.w3cplus.com/css/advanced-html-css-lesson2-detailed-css-positioning.html" target="_blank" rel="noopener">大漠老师主讲定位详解</a>     <a href="http://www.cnblogs.com/coffeedeveloper/p/3145790.html" target="_blank" rel="noopener">博客园position/float详细</a>  <a href="http://riny.net/lab/css/layout.html" target="_blank" rel="noopener">常见两列布局</a></p>
+</blockquote>
+<p>####<strong>Overflow技巧</strong><br>一种清除浮动的技巧是使用“overflow”属性。在具有浮动元素的父容器中设置“overflow”的属性值为“auto| | hidden”，这样父容器就会有一个高度存在。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/* 默认值。内容不会被修剪，会呈现在元素框之外 */</span><br><span class="line">overflow: visible;</span><br><span class="line"></span><br><span class="line">/* 内容会被修剪，并且其余内容不可见 */</span><br><span class="line">overflow: hidden;</span><br><span class="line"></span><br><span class="line">/* 内容会被修剪，浏览器会显示滚动条以便查看其余内容 */</span><br><span class="line">overflow: scroll;</span><br><span class="line"></span><br><span class="line">/* 由浏览器定夺，如果内容被修剪，就会显示滚动条 */</span><br><span class="line">overflow: auto;</span><br><span class="line"></span><br><span class="line">/* 规定从父元素继承overflow属性的值 */</span><br><span class="line">overflow: inherit;</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/16/float/#more" rel="contents">
-              Read more &raquo;
+            <a class="btn" href="/2017/05/16/定位/#more" rel="contents">
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -485,7 +477,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">Ligen</p>
+              <p class="site-author-name" itemprop="name">Genluo</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -497,7 +489,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">21</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -530,7 +522,7 @@
                       
                     
                     <span class="site-state-item-count">10</span>
-                    <span class="site-state-item-name">categories</span>
+                    <span class="site-state-item-name">Kategorien</span>
                   
                 </div>
               
@@ -559,7 +551,7 @@
                       
                     
                     <span class="site-state-item-count">8</span>
-                    <span class="site-state-item-name">tags</span>
+                    <span class="site-state-item-name">Tags</span>
                   
                 </div>
               
@@ -602,7 +594,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Ligen</span>
+  <span class="author" itemprop="copyrightHolder">Genluo</span>
 
   
 
