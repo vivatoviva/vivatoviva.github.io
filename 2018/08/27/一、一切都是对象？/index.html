@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="引用自王福朋老师的经典博文，加上自己的理解完成的一篇博文  一、一切都是对象？“一切都是对象”这句话的重点在于如何去理解“对象”这个概念。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原型、原型链">
+<meta property="og:url" content="http://blogoog.com/2018/08/27/一、一切都是对象？/index.html">
+<meta property="og:site_name" content="Genluo">
+<meta property="og:description" content="引用自王福朋老师的经典博文，加上自己的理解完成的一篇博文  一、一切都是对象？“一切都是对象”这句话的重点在于如何去理解“对象”这个概念。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/17-8-10/26737761.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181509180812624.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181510403153733.png">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/17-8-10/50601507.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181512068463597.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181635128935132.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181635468939277.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181636252689920.png">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg">
+<meta property="og:updated_time" content="2017-08-12T06:19:26.033Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原型、原型链">
+<meta name="twitter:description" content="引用自王福朋老师的经典博文，加上自己的理解完成的一篇博文  一、一切都是对象？“一切都是对象”这句话的重点在于如何去理解“对象”这个概念。">
+<meta name="twitter:image" content="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blogoog.com/2018/08/27/一、一切都是对象？/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>原型、原型链 | Genluo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Genluo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/一、一切都是对象？/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Genluo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Genluo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">原型、原型链
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
+            
+            
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-12 14:19:26" itemprop="dateModified" datetime="2017-08-12T14:19:26+08:00">2017-08-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/27/一、一切都是对象？/" class="leancloud_visitors" data-flag-title="原型、原型链">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p><img src="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg" alt="此处输入图片的描述"></p>
+<blockquote>
+<p>引用自<a href="http://www.cnblogs.com/wangfupeng1988/p/3977924.html" target="_blank" rel="noopener">王福朋老师</a>的经典博文，加上自己的理解完成的一篇博文</p>
+</blockquote>
+<h2 id="一、一切都是对象？"><a href="#一、一切都是对象？" class="headerlink" title="一、一切都是对象？"></a>一、一切都是对象？</h2><p>“一切都是对象”这句话的重点在于如何去理解“对象”这个概念。<br><a id="more"></a></p>
+<h4 id="1-什么是对象（通俗）"><a href="#1-什么是对象（通俗）" class="headerlink" title="1.什么是对象（通俗）"></a>1.什么是对象（通俗）</h4><p>  <strong>对象就是属性的集合</strong></p>
+<h4 id="2-怎样创建对象"><a href="#2-怎样创建对象" class="headerlink" title="2. 怎样创建对象"></a>2. 怎样创建对象</h4><p>构造函数就是构建新对象的：<br>使用new来调用函数，或者说发生构造函数调用时：</p>
+<ol>
+<li>创建（或者构造）一个全新的对象</li>
+<li>这个新对象会被执行[[prototype]]连接</li>
+<li>这个新对象会被绑定到函数调用的this</li>
+<li>如果函数没有返回其他对象，那么new表达式中的函数调用会自动返回这个新对象。<pre><code>--91页
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'王福朋'</span>;</span><br><span class="line">    <span class="keyword">this</span>.year = <span class="number">1988</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn1 = <span class="keyword">new</span> Fn(); </span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> fn1)    <span class="comment">//Object类型</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>上面例子很简单，它能够说明：对象可以通过函数来创建的，但是说–对象都是通过函数创建的–有些人可能反驳：不对！因为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123; a: 10, b: 20 &#125;;</span><br><span class="line">var arr = [5, &apos;x&apos;, true];</span><br><span class="line">console.log(typeof obj) //Object</span><br><span class="line">console.log(typeof arr) //Object</span><br><span class="line"></span><br><span class="line">//（语法糖）相当与</span><br><span class="line">//var obj = new Object（）</span><br><span class="line">      obj.a = 10;</span><br><span class="line">      obj.b = 20;</span><br><span class="line">  var arr = new Array(）;</span><br><span class="line">      arr[0] = 5;</span><br><span class="line">      arr[1] = &apos;x&apos;;</span><br><span class="line">      arr[2] = true;</span><br><span class="line">   //这样就是function Array（）和function Object（）创建的对象</span><br><span class="line">   //证明了对象都是由函数创建的</span><br></pre></td></tr></table></figure>
+<h4 id="3-函数是通过什么创建的"><a href="#3-函数是通过什么创建的" class="headerlink" title="3.函数是通过什么创建的"></a>3.函数是通过什么创建的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> var sum = function (num1, num2) &#123;</span><br><span class="line">     return num1 + num2;</span><br><span class="line"> &#125;</span><br><span class="line"> var sum = new Function(&quot;num1&quot;, &quot;num2&quot;, &quot;return num1 + num2&quot;); </span><br><span class="line"> console.log(sum)   //function</span><br><span class="line"> </span><br><span class="line"> //函数是通过new Function（）构建的</span><br><span class="line"> </span><br><span class="line"> //这样就是function Array（）</span><br><span class="line"> //function Object（）</span><br><span class="line"> //function sum（），</span><br><span class="line"> //其中Object和Array，sum都是函数，这些函数都是通过new  Function（···）创建的，然后这些函数再去创造对应的对象，</span><br><span class="line"></span><br><span class="line">//function Function（），这个是实例化创建函数（函数的创建工厂）</span><br><span class="line"></span><br><span class="line">//现在将引用类型分为2种</span><br><span class="line">//一种是通过new Function创建的函数，另一种是通过function（构造函数）创建的对象</span><br></pre></td></tr></table></figure>
+<p><img src="http://oquq74tfk.bkt.clouddn.com/17-8-10/26737761.jpg" alt=""> </p>
+<p> 在 JavaScript中，函数是头等(first-class)对象，因为它们可以像任何其他对象一样具有属性和方法。它们与其他对象的区别在于函数可以被调用。</p>
+<p>—–简而言之，它们是Function 对象。</p>
+<h4 id="4-验证上面说法"><a href="#4-验证上面说法" class="headerlink" title="4.验证上面说法"></a>4.验证上面说法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">       function show(x) &#123;</span><br><span class="line">            //typeof输出类型的标识</span><br><span class="line">            console.log(typeof x);    // undefined</span><br><span class="line">            console.log(typeof 10);   // number</span><br><span class="line">            console.log(typeof &apos;abc&apos;); // string</span><br><span class="line">            console.log(typeof true);  // boolean</span><br><span class="line">            </span><br><span class="line">            //引用类型</span><br><span class="line">            console.log(typeof function () &#123;&#125;);  //function</span><br><span class="line">            console.log(typeof Array)            //function</span><br><span class="line">            console.log(typeof Object)           //function</span><br><span class="line">            </span><br><span class="line">            console.log(typeof [1, &apos;a&apos;, true]);    //object</span><br><span class="line">            console.log(typeof &#123; a: 10, b: 20 &#125;);  //object</span><br><span class="line">            console.log(typeof null);              //object</span><br><span class="line">            console.log(typeof new Number(10));    //object</span><br><span class="line">        &#125;</span><br><span class="line">        show();</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 5.总结：</span><br><span class="line">* 对象就是属性的集合</span><br><span class="line"></span><br><span class="line">* 对象都是由函数创建的</span><br><span class="line"></span><br><span class="line">* 函数实际上是new Function（）的实例对象，因此函数就是Function对象，可以像任何其他对象一样具有属性和方法。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">但是上面那张图片解释很奇怪，想一下，</span><br><span class="line">##### 问题一 ：function Function（）这个函数由什么创建的</span><br><span class="line">    console.log(typeof Function)   //function</span><br><span class="line">function Function（）用来创建函数，但他自身也是一个函数，难道是他自己创建自己的吗？，很奇怪，对吧。</span><br><span class="line"></span><br><span class="line">##### 问题二：Function 为什么判断即是对象也是函数（需要使用instanceof机制解决）</span><br></pre></td></tr></table></figure>
+<pre><code>//判断一个变量是不是对象很简单,引用类型的类型判断用instanceof
+//这个和instanceof查询机制有关
+var fn = function () {};
+console.log(fn instanceof Function);//true       
+
+//但是
+console.log(Function instanceof Object);  // true
+console.log(Function instanceof Function) //true
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">所以我们暂且将Function这个函数排除在外，下面所讲的函数都是由function Function（）实例化的不包括function Function（）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 二、prototype原型和\__proto__隐式原型</span><br><span class="line"></span><br><span class="line">上面说过函数也是一种对象。他也是属性的结合，可以自定义属性</span><br><span class="line"></span><br><span class="line">#### 1.函数的prototype属性</span><br><span class="line"></span><br><span class="line">Javascript中默认给**函数**一个属性--prototype。每个函数都有一个属性叫做prototype，这个prototype属性值是一个**对象**（属性的集合）默认的（）有一个叫做**constructor的属性，指向这个函数本身**</span><br><span class="line">![此处输入链接的描述][3]</span><br><span class="line">`SuperType.prototype.constructor === SuperType`</span><br><span class="line">superType是一个函数，右侧就是他的原型。</span><br><span class="line"></span><br><span class="line">我们可以在prototype中自定义一些属性</span><br></pre></td></tr></table></figure>
+<pre><code>function Fn() { }
+Fn.prototype.name = &apos;王福朋&apos;;
+Fn.prototype.getYear = function () {
+    return 1988;
+};
+console.log(Fn.prototype);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">这时Fn的原型就添加了这几个属性</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![此处输入图片的描述][4]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">但是这样做有什么用？</span><br><span class="line"></span><br><span class="line">按照一段代码显示就是</span><br></pre></td></tr></table></figure>
+<pre><code>function Fn() { }
+Fn.prototype.name = &apos;王福朋&apos;;
+Fn.prototype.getYear = function () {
+    return 1988;
+};
+
+var fn = new Fn();
+console.log(fn);//出现__proto__属性
+console.log(fn.name);
+console.log(fn.getYear());
+console.log(fn.prototype);//undefined
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">这时Fn是一个函数，fn对象是Fn函数中new出来的，这样fn对象就可以调用Fn.prototype中的属性。</span><br><span class="line"></span><br><span class="line">#### 2.对象（函数对象）的\__proto__</span><br><span class="line"></span><br><span class="line">每个**对象（包括函数对象）**都有一个隐藏的属性“\__proto__”，这个属性**引用**的**创建这个对象的函数的prototype**。这个隐藏的属性成为**隐式原型**</span><br><span class="line"></span><br><span class="line">prototpe存在的意义就是给对象（函数对象）的\__proto__引用</span><br></pre></td></tr></table></figure>
+<p>   var o1 = {a : 1,<br>              b : 2,<br>              c : 3,<br>    };<br>   console.log(o1.<strong>proto</strong> === Object.prototype)<br><code>`</code><br><img src="http://images.cnitblog.com/blog/138012/201409/181509180812624.png" alt="此处输入图片的描述"><br>即，每个对象（包括函数对象）都有一个__proto__属性，指向创建该对象的函数的prototype。</p>
+<p>那么上图中的“Object.prototype”也是一个对象，它的__proto__指向哪里？</p>
+<p>好问题！</p>
+<p>在说明“Object prototype”之前，先说一下函数的prototype。函数的prototype本质上就是和 var obj = {} 是一样的，都是一个对象，都是被Object创建，所以它的__proto__指向的就是Object.prototype。</p>
+<p>但是Object.prototype确实一个特例——它的__proto__指向的是null，切记切记！</p>
+<p><img src="http://images.cnitblog.com/blog/138012/201409/181510403153733.png" alt="此处输入图片的描述"></p>
+<p>根据上面都知道函数是根据Function创建出来的，那么我们猜测函数（Function对象）的__proto__应该指向Function.prototype<br><img src="http://oquq74tfk.bkt.clouddn.com/17-8-10/50601507.jpg" alt=""></p>
+<h4 id="3-如何解释上面那个奇怪问题"><a href="#3-如何解释上面那个奇怪问题" class="headerlink" title="3.如何解释上面那个奇怪问题"></a>3.如何解释上面那个奇怪问题</h4><p><img src="http://images.cnitblog.com/blog/138012/201409/181512068463597.png" alt="此处输入图片的描述"><br>上图中，很明显的标出了：自定义函数Foo.<strong>proto</strong>指向Function.prototype，Object.<strong>proto</strong>指向Function.prototype，唉，怎么还有一个……Function.<strong>proto</strong>指向Function.prototype？这不成了循环引用了？<br>（<strong>proto</strong>指向创建自己的函数原型）<br>对！是一个环形结构。</p>
+<p>其实稍微想一下就明白了。Function也是一个函数，函数是一种对象，也有<strong>proto</strong>属性。既然是函数，那么它一定是被Function创建。所以——Function是被自身创建的。所以它的<strong>proto</strong>指向了自身的Prototype。所以回答上面那个问题-Function是被自身创建的。</p>
+<h2 id="三、老朋友instanceof的查询机制"><a href="#三、老朋友instanceof的查询机制" class="headerlink" title="三、老朋友instanceof的查询机制"></a>三、老朋友instanceof的查询机制</h2><p>对于值类型，你可以通过typeof判断，string/number/boolean都很清楚，但是typeof在判断到引用类型的时候，返回值只有object/function，你不知道它到底是一个object对象，还是数组，还是new Number等等。这个时候就需要用到instanceof。例如：</p>
+<p><img src="http://images.cnitblog.com/blog/138012/201409/181635128935132.png" alt="此处输入图片的描述"></p>
+<h4 id="这是我们需要知道instanceof的判断规则"><a href="#这是我们需要知道instanceof的判断规则" class="headerlink" title="这是我们需要知道instanceof的判断规则"></a>这是我们需要知道instanceof的判断规则</h4><p><img src="http://images.cnitblog.com/blog/138012/201409/181635468939277.png" alt="此处输入图片的描述"><br>Instanceof运算符的第一个变量是一个对象，暂时称为A；第二个变量一般是一个函数，暂时称为B。</p>
+<p>Instanceof的判断队则是：沿着A的<strong>proto</strong>这条线来找，同时沿着B的prototype这条线来找，如果两条线能找到同一个引用，即同一个对象，那么就返回true。如果找到终点还未重合，则返回false。</p>
+<p>按照以上规则，大家看看“ f1 instanceof Object ”这句代码是不是true？ 根据上图很容易就能看出来，就是true。</p>
+<p>通过上以规则，你可以解释很多比较怪异的现象，例如：</p>
+<p><img src="http://images.cnitblog.com/blog/138012/201409/181636252689920.png" alt="此处输入图片的描述"></p>
+<p>这些看似很怪异的现象，其实都是根据上面的查找方法；比如现在咋们就分析这张图片<br><img src="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg" alt="此处输入图片的描述"></p>
+<p>prototype是原型，是对象的__proto__属性将创建自身函数的prototype连接（引用），层层连接形成一条最后指向Object.prototype.__proto__===null的链，称之为<strong>原型链</strong>。</p>
+<p>instanceof这样设计，就是根据原型链，或者说是继承吧</p>
+<p>这样现在就很好理解一切都是对象这个说法了，所谓的原型链就是上面”__proto__”这条链状结构了</p>
+<ul>
+<li>Object 是一个 JS 基础类型，其他所有类型都从 Object 继承了基本的行为。</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/27/设计思路/" rel="next" title="3D云标签/3D旋转链接设计思路（简单实现）">
+                <i class="fa fa-chevron-left"></i> 3D云标签/3D旋转链接设计思路（简单实现）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/27/正则表达式/" rel="prev" title="正则表达式">
+                正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg"
+                alt="Genluo" />
+            
+              <p class="site-author-name" itemprop="name">Genluo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/vivatoviva" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="1461304646@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、一切都是对象？"><span class="nav-number">1.</span> <span class="nav-text">一、一切都是对象？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-什么是对象（通俗）"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.什么是对象（通俗）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-怎样创建对象"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 怎样创建对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-函数是通过什么创建的"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.函数是通过什么创建的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-验证上面说法"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.验证上面说法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-如何解释上面那个奇怪问题"><span class="nav-number">1.0.5.</span> <span class="nav-text">3.如何解释上面那个奇怪问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、老朋友instanceof的查询机制"><span class="nav-number">2.</span> <span class="nav-text">三、老朋友instanceof的查询机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#这是我们需要知道instanceof的判断规则"><span class="nav-number">2.0.1.</span> <span class="nav-text">这是我们需要知道instanceof的判断规则</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Genluo</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1274562140&web_id=1274562140" language="JavaScript"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "ejARfLJyRPie3F2fgmhWiqhb-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "ejARfLJyRPie3F2fgmhWiqhb-gzGzoHsz",
+                'X-LC-Key': "uae7MGQ7caGIE2W6pE5mvqSL",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

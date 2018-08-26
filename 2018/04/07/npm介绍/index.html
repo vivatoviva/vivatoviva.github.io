@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="一、commonJS规范在介绍npm的前面，我们先介绍一下commonJS规范。commonJS规范的提出，主要是为了弥补js没有标准的缺陷，已达到Ruby和Java具备开发大型应用的基础能力，如今，commonJS中的大部分规范虽然依旧是草案，但是已经为javascript开发大型应用指明了一条非常棒方向，目前，它依然在成长，目前commonJS规范涵盖了模块、二进制、Buffer、字符集编码、">
+<meta name="keywords" content="vivatoviva">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm介绍（一）">
+<meta property="og:url" content="http://blogoog.com/2018/04/07/npm介绍/index.html">
+<meta property="og:site_name" content="Genluo">
+<meta property="og:description" content="一、commonJS规范在介绍npm的前面，我们先介绍一下commonJS规范。commonJS规范的提出，主要是为了弥补js没有标准的缺陷，已达到Ruby和Java具备开发大型应用的基础能力，如今，commonJS中的大部分规范虽然依旧是草案，但是已经为javascript开发大型应用指明了一条非常棒方向，目前，它依然在成长，目前commonJS规范涵盖了模块、二进制、Buffer、字符集编码、">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4895052-0b71e2fbbf6f9684.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4895052-b01fd070df3b7e4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-4-19/95179513.jpg">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-4-20/6073757.jpg">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-4-20/66916225.jpg">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-4-20/7262253.jpg">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-4-20/87964279.jpg">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-4-20/61829995.jpg">
+<meta property="og:updated_time" content="2018-04-21T03:21:57.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm介绍（一）">
+<meta name="twitter:description" content="一、commonJS规范在介绍npm的前面，我们先介绍一下commonJS规范。commonJS规范的提出，主要是为了弥补js没有标准的缺陷，已达到Ruby和Java具备开发大型应用的基础能力，如今，commonJS中的大部分规范虽然依旧是草案，但是已经为javascript开发大型应用指明了一条非常棒方向，目前，它依然在成长，目前commonJS规范涵盖了模块、二进制、Buffer、字符集编码、">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4895052-0b71e2fbbf6f9684.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blogoog.com/2018/04/07/npm介绍/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>npm介绍（一） | Genluo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Genluo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/04/07/npm介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Genluo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Genluo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">npm介绍（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-07 10:21:00" itemprop="dateCreated datePublished" datetime="2018-04-07T10:21:00+08:00">2018-04-07</time>
+            
+            
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-21 11:21:57" itemprop="dateModified" datetime="2018-04-21T11:21:57+08:00">2018-04-21</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/npm/" itemprop="url" rel="index"><span itemprop="name">npm</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/07/npm介绍/" class="leancloud_visitors" data-flag-title="npm介绍（一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、commonJS规范"><a href="#一、commonJS规范" class="headerlink" title="一、commonJS规范"></a>一、commonJS规范</h3><p>在介绍npm的前面，我们先介绍一下commonJS规范。commonJS规范的提出，主要是为了弥补js没有标准的缺陷，已达到Ruby和Java具备开发大型应用的基础能力，如今，commonJS中的大部分规范虽然依旧是草案，但是已经为javascript开发大型应用指明了一条非常棒方向，目前，它依然在成长，目前commonJS规范涵盖了模块、二进制、Buffer、字符集编码、I/O流、进程环境、文件系统、套接字、单元测试、web服务器网关接口、包管理等。而其中的npm则就是commonJS中关于包管理的具体实现。<br><img src="https://upload-images.jianshu.io/upload_images/4895052-0b71e2fbbf6f9684.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片.png"><br>-摘抄于《深入浅出Nodejs》</p>
+<a id="more"></a>
+<h3 id="二、npm基本介绍"><a href="#二、npm基本介绍" class="headerlink" title="二、npm基本介绍"></a>二、npm基本介绍</h3><ul>
+<li>Node组织了自身的核心模块，也使得第三方文件模块可以有序的编写和使用。但是在第三方模块中，模块与模块之间仍然是散列在各地的，相互之间不能直接引用。而在模块之外，包和NPM则是将模块连接起来的一种机制。</li>
+<li>模块就是：我们可以简单的把它看成一个实现单独功能的文件，模块和文件是一一对应的。</li>
+<li>包：包是在模块基础上更深一步的抽象，Node.js的包类似于C/C++的函数库或者java的类库，它讲某个独立的功能封装起来，用于发布、更新、依赖管理的版本控制。开发了<strong>npm来解决包的发布和获取需求</strong>。<br>包是由package.json定义的文件或目录 </li>
+<li>npm官方文档：<a href="https://docs.npmjs.com/" target="_blank" rel="noopener">https://docs.npmjs.com/</a></li>
+<li>npm解决包的发布和获取需求</li>
+<li>Node Package(包) Manager(管理器)</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4895052-b01fd070df3b7e4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="三、包结构与包描述文件"><a href="#三、包结构与包描述文件" class="headerlink" title="三、包结构与包描述文件"></a>三、包结构与包描述文件</h3><h4 id="1、commonJS规范中包结构"><a href="#1、commonJS规范中包结构" class="headerlink" title="1、commonJS规范中包结构"></a>1、commonJS规范中包结构</h4><ul>
+<li><code>package.json</code>： 包描述文件</li>
+<li><code>bin</code>：用于存放可执行二进制文件的目录</li>
+<li><code>lib</code>：用于存放JavaScript代码的目录</li>
+<li><code>doc</code>： 用于存放文档的目录</li>
+<li><code>test</code>： 用于存放单元测试用例的代码</li>
+</ul>
+<h4 id="2、commonJS-包描述文件"><a href="#2、commonJS-包描述文件" class="headerlink" title="2、commonJS 包描述文件"></a>2、commonJS 包描述文件</h4><p><code>CommonJS为package.json文件定义了如下一些必要字段</code></p>
+<ul>
+<li><code>name</code>:包的名称，必须是唯一的，由小写英文字母、数字和下划线组成，不能包含空格。</li>
+<li><code>description</code>：包的简要说明。</li>
+<li><code>version</code>: 符合语义化版本识别规范的版本字符串。<ul>
+<li>主版本号： 当API发生改变，并与之前的版本不兼容的时候</li>
+<li>次版本号： 当增加了功能，但是向后兼容的时候</li>
+<li>补丁版本号： 当做了向后兼容的缺陷修复的时候</li>
+</ul>
+</li>
+<li><code>keywords</code>：关键字数组，通常用于搜索。</li>
+<li><code>maintainers</code>:维护者数组，每个元素要包含name、email（可选）、web（可选）字段。</li>
+<li><code>contributors</code>：贡献者数组，格式与maintainers相同。包的作者应该是贡献者数组的第一个元素。</li>
+<li><code>bugs</code>：提交bug的地址，可以是网址或者电子邮件地址。</li>
+<li><code>licenses</code>:许可证数组，每个元素要包含type(许可证的名称)和url(链接到许可证文本的地址)字段。</li>
+<li><code>repositories</code>：仓库托管地址数组。每个元素要包含type(许可证的名称)和url(链接到许可证文本的地址)字段。</li>
+<li><code>dependencies</code>:包的依赖，一个关联数组，由包名称和版本组成。</li>
+</ul>
+<p><code>除此之外，还有一些可选字段：</code></p>
+<ul>
+<li><code>homepage</code>： 当前包网站地址</li>
+<li><code>os</code>： 操作系统支持列表</li>
+<li><code>cpu</code>： cpu架构的支持列表</li>
+<li><code>engine</code>: 支持的JavaScript引擎类表，有效的引擎取值为ejs、flusspferd、node、v8等等</li>
+<li><code>builtin</code>： 标志当前包是否是内建在底层系统的标准组件</li>
+<li><code>directories</code>： 包目录说明</li>
+<li><code>implements</code>： 实现规范列表，标志当前包实现了commonJS的那些规范</li>
+<li><code>script</code>： 脚本说明对象。npm script 是记录在 package.json 中的 scripts 字段中的一些自定义脚本，使用自定义脚本，用户可以将一些项目中常用的命令行记录在 package.json 不需要每次都要敲一遍。</li>
+</ul>
+<h4 id="3、npm-包描述文件"><a href="#3、npm-包描述文件" class="headerlink" title="3、npm 包描述文件"></a>3、npm 包描述文件</h4><p><code>主要多了author、bin、main、devDependencies</code></p>
+<ul>
+<li><code>author</code>： 包作者</li>
+<li><code>bin</code>： 一些包作者希望包可以作为命令行工具使用，配置好bin字段后，通过npm install package_name -g命令可以将脚本添加到执行路径中，之后可以在命令行中直接执行。这种称之为全局模式</li>
+<li><code>main</code>： 模块引入方法require（）在引入包时，会优先检查这个字段，并将其作为包中其余模块入口。如果不存在这个字段，require（）方法会查找宝目录下的index.js、index.node、index.json文件作为默认入口</li>
+<li><code>devDependencies</code>: 一些模块只有在开发的时候需要依赖，配置这个属性，可以提示包的后续开发者安装依赖包。</li>
+</ul>
+<h3 id="四、依赖树概念"><a href="#四、依赖树概念" class="headerlink" title="四、依赖树概念"></a>四、依赖树概念</h3><ul>
+<li>物理结构和逻辑结构 <ul>
+<li>逻辑结构：<code>npm ls</code>以树状图的方式列下一个项目下面的所有依赖的 <strong>逻辑结构</strong></li>
+<li>物理结构：具体文件引用结构，通常有npm等包管理工具决定 </li>
+</ul>
+</li>
+<li>问题：如果按照逻辑结构来决定物理结构，就会创建了太深的依赖关系树，导致 Windows 上很长的目录路径问题</li>
+</ul>
+<h3 id="五、模块查找方式（深入浅出Nodejs-p16）"><a href="#五、模块查找方式（深入浅出Nodejs-p16）" class="headerlink" title="五、模块查找方式（深入浅出Nodejs p16）"></a>五、模块查找方式（深入浅出Nodejs p16）</h3><h4 id="1、三个步骤"><a href="#1、三个步骤" class="headerlink" title="1、三个步骤"></a>1、三个步骤</h4><p>在node中引入一个模块需要经过三个步骤</p>
+<ul>
+<li>路径分析</li>
+<li>文件定位</li>
+<li>编译执行</li>
+</ul>
+<h4 id="2、路径分析和文件定位"><a href="#2、路径分析和文件定位" class="headerlink" title="2、路径分析和文件定位"></a>2、路径分析和文件定位</h4><blockquote>
+<p>模块的分类：</p>
+</blockquote>
+<ul>
+<li>核心模块</li>
+<li>路径形式的文件模块</li>
+<li>自定义模块</li>
+</ul>
+<p>通常使用npm i安装的npm包都是自定义模块，在运行时动态加载，需要完整的路径分析、文件定位、编译执行过程、速度相对来说比较慢，所以我们这里就什么理解自定义模块的查找方式中的路径生成规则，为什么你的require（包名）就能够将这个包require进来使用。</p>
+<blockquote>
+<p>模块路径生成规则：</p>
+</blockquote>
+<ul>
+<li>当前目录下的<code>node_modules</code></li>
+<li>父目录下的<code>node_modules</code></li>
+<li>父目录的父目录下<code>node_modules</code></li>
+<li>沿着路径向上逐级递归，直到根目录下的<code>node_modules</code></li>
+</ul>
+<p>可见当前文件目录越深，模块查找会耗时更多，这就是模块自定义加载速度是最慢的原因</p>
+<h3 id="六、安装依赖"><a href="#六、安装依赖" class="headerlink" title="六、安装依赖"></a>六、安装依赖</h3><h4 id="1、扁平化依赖"><a href="#1、扁平化依赖" class="headerlink" title="1、扁平化依赖"></a>1、扁平化依赖</h4><ul>
+<li><a href="https://blog.csdn.net/gentlycare/article/details/51332882" target="_blank" rel="noopener">扁平化依赖</a></li>
+<li><a href="https://www.cnblogs.com/penghuwan/p/6970543.html" target="_blank" rel="noopener">扁平化安装过程</a></li>
+</ul>
+<h4 id="2、模块安装过程"><a href="#2、模块安装过程" class="headerlink" title="2、模块安装过程"></a>2、模块安装过程</h4><h5 id="npm-v2解析包的依赖关系"><a href="#npm-v2解析包的依赖关系" class="headerlink" title="npm v2解析包的依赖关系"></a>npm v2解析包的依赖关系</h5><p>这个版本下安装依赖使用嵌套安装依赖<br><img src="http://oquq74tfk.bkt.clouddn.com/18-4-19/95179513.jpg" alt=""></p>
+<p>优点和弊端</p>
+<p><strong>优点</strong>：解决了版本单一时存在的不兼容问题，实现多版本兼容<br><strong>缺点</strong>：可能造成相同模块大量冗余</p>
+<p>哪么如何做到多版本兼容额前提下减少这种模块冗余问题，于是npm3做了一个改进</p>
+<h5 id="npm-v3解析包的依赖关系"><a href="#npm-v3解析包的依赖关系" class="headerlink" title="npm v3解析包的依赖关系"></a>npm v3解析包的依赖关系</h5><p>npm v3会尽量把逻辑上某个层级的模块在物理结构上全部放在项目的第一层级，具体摘抄为以下：</p>
+<ul>
+<li>在安装某个二级模块的同时，如果发现第一层级层级还没有相同名称的模块，便把这第二层的模块放在第一层级（参考上满模块路径生成规则）</li>
+</ul>
+<p><img src="http://oquq74tfk.bkt.clouddn.com/18-4-20/6073757.jpg" alt=""></p>
+<ul>
+<li>在安装某个二级模块的时，若发现第一层级有相同的名称，相同的版本，便直接复用那个模块</li>
+</ul>
+<p><img src="http://oquq74tfk.bkt.clouddn.com/18-4-20/66916225.jpg" alt=""></p>
+<ul>
+<li>在安装某个二级模块时，若发现第一层级有相同名称，但是版本却不相同的模块，便只能嵌套在自身的父模块下方</li>
+</ul>
+<p><img src="http://oquq74tfk.bkt.clouddn.com/18-4-20/7262253.jpg" alt=""></p>
+<p>但是npm v3仍然没有把npm v2模块冗余的缺陷优化到极致，可能出现这种情况</p>
+<p><img src="http://oquq74tfk.bkt.clouddn.com/18-4-20/87964279.jpg" alt=""></p>
+<h5 id="npm-v3模块去重"><a href="#npm-v3模块去重" class="headerlink" title="npm v3模块去重"></a>npm v3模块去重</h5><p>实际是使用 npm dedupe去除冗余模块原理就是当A模块下的C V1.0模块被更新到 C V2.0情况下，我们可以使用这条命令把所有C v2.0的二级依赖模块“重定向”到一级目录下的那个C v1.0</p>
+<p><img src="http://oquq74tfk.bkt.clouddn.com/18-4-20/61829995.jpg" alt=""></p>
+<ul>
+<li><a href="https://www.zhihu.com/question/66629910/answer/273992383" target="_blank" rel="noopener">npm install发生了什么</a></li>
+<li><a href="https://docs.npmjs.com/cli/install" target="_blank" rel="noopener">官方安装文档</a></li>
+</ul>
+<h4 id="3、全局安装和局部安装"><a href="#3、全局安装和局部安装" class="headerlink" title="3、全局安装和局部安装"></a>3、全局安装和局部安装</h4><p><code>按照位置来区分：</code> </p>
+<ul>
+<li>全局安装是安装在：/c/Users/用户名/AppData/Roaming/npm/node_modules</li>
+<li>局部安装是安装在：当前项目的node_modules</li>
+</ul>
+<p><code>按照使用方式：</code></p>
+<ul>
+<li>全局安装：可以直接在命令行里面使用</li>
+<li>局部安装：可以require（）引用使用</li>
+</ul>
+<p><code>如何选择安装方式</code></p>
+<ul>
+<li>如果您要在程序中使用的require(‘whatever’)，请使用本地安装，然后将其安装在项目的根目录下。</li>
+<li>如果你正在安装你想在你的shell中使用的东西，在命令行或者其他东西上，请全局安装它，这样它的二进制文件最终会放到你的PATH环境变量中。</li>
+</ul>
+<h3 id="七、缓存目录"><a href="#七、缓存目录" class="headerlink" title="七、缓存目录"></a>七、缓存目录</h3><ul>
+<li><code>npm config get cache</code>：查找缓存包存放地址</li>
+<li>模块安装步骤：<ul>
+<li>发出npm install命令</li>
+<li>npm 向 registry 查询模块压缩包的网址</li>
+</ul>
+</li>
+<li>下载压缩包，存放在npm-cache（缓存目录）<ul>
+<li>解压压缩包到当前项目的node_modules目录</li>
+</ul>
+</li>
+<li>运行npm install首先会判断项目文件夹node_modules中有没有对应的模块，没有直接去远程下载，然后保存在缓存中，将缓存中的压缩包解压至对应的项目的node_modules中。（不直接从缓存读取是因为缓存中的包版本可能是旧的，所以要去拉最新的包版本）</li>
+<li>优先使用缓存安装：<code>--prefer-offline</code></li>
+<li>优先线上安装： <code>--prefer-online</code></li>
+<li>完全离线：<code>--offline</code></li>
+</ul>
+<h3 id="八、npm缺陷"><a href="#八、npm缺陷" class="headerlink" title="八、npm缺陷"></a>八、npm缺陷</h3><ul>
+<li>频繁使用的代码包创建了太深的依赖关系树，导致 Windows 上很长的目录路径问题（虽然v3版本使用扁平化算法进行优化。但是有时候也避免不了）</li>
+<li>当被不同的依赖关系需要时，代码包会被复制粘贴多次，比较占存储空间</li>
+<li>扁平化依赖树的算法相当复杂</li>
+<li>不能保证同一份package.json在不同机器上安装着相同的依赖，可能间接导致错误（不可靠）</li>
+</ul>
+<h3 id="九、npx：-包执行器"><a href="#九、npx：-包执行器" class="headerlink" title="九、npx： 包执行器"></a>九、npx： 包执行器</h3><p>当升级<a href="mailto:npm@5.2.0" target="_blank" rel="noopener">npm@5.2.0</a>，会安装一个新的包npx</p>
+<p>npx 的使用很简单，就是执行 npx command 即可，这里的 command 默认就是 ./node_modules 目录中安装的可执行脚本名。</p>
+<p>了解很少，这篇博文讲的比较好<a href="https://juejin.im/post/5ab3f77df265da2392364341#heading-17" target="_blank" rel="noopener">npx介绍</a></p>
+<h3 id="十、常用命令"><a href="#十、常用命令" class="headerlink" title="十、常用命令"></a>十、常用命令</h3><ul>
+<li><code>npm help &lt;????&gt;</code>: 查看某一命令的帮助</li>
+<li><code>npm install &lt;package&gt;</code> ：默认使用–save，如果不想保存到package.json中，可以添加–no-save参数；还可以指定–save-dev 或 -g参数</li>
+<li><code>npm install --production</code>: npm将不会安装在中列出的模块 devDependencies</li>
+<li><code>npm install npm -g</code>： npm更新命令</li>
+<li><code>npm init</code>：在此目录生成package.json文件，可以添加-y | –yes 参数则默认所有配置为默认yes </li>
+<li><code>npm root -g</code>：查看全局安装地址</li>
+<li><code>npm run</code>:列出项目所有脚本命令参数，</li>
+<li><code>npm uninstall &lt;package&gt;</code>:卸载依赖包， 默认使用–save参数，即从package.json中移除</li>
+<li><code>npm ls [-g] [--depth=0]</code>:查看当前目录或全局的依赖包，可指定层级为0</li>
+<li><code>npm outdated</code>：查看当前过期依赖，其中current显示当前安装版本，latest显示依赖包的最新版本，wanted显示我们可以升级到可以不破坏当前代码的版本</li>
+<li><code>npm search &lt;string&gt;</code>：查找包含该字符串的依赖包，根据keywords进行查找</li>
+<li><code>npm prune</code>：移除当前不在package.json中但是存在node_modules中的依赖</li>
+<li><code>npm repo &lt;package&gt;</code>：浏览器端打开项目地址（GitHub）</li>
+<li><code>npm home &lt;package&gt;</code> ：在浏览器端查看项目（项目主页）</li>
+<li><code>npm info &lt;package&gt;</code>:  查看package的package.json</li>
+<li><code>npm view &lt;package&gt;</code>: 等同于npm info <package></package></li>
+<li><code>npm dedupe</code>: 去除冗余模块</li>
+</ul>
+<h3 id="十一、学习资料"><a href="#十一、学习资料" class="headerlink" title="十一、学习资料"></a>十一、学习资料</h3><ul>
+<li><a href="https://blog.csdn.net/tanga842428/article/details/71404761" target="_blank" rel="noopener">npm缓存目录</a></li>
+<li><a href="http://www.cnblogs.com/PeunZhang/p/5553574.html" target="_blank" rel="noopener">参考资料</a></li>
+<li><a href="https://github.com/ericdum/mujiang.info/issues/6/" target="_blank" rel="noopener">package.json字段详解</a></li>
+<li><a href="https://segmentfault.com/a/1190000004221514" target="_blank" rel="noopener">深入模块的安装</a></li>
+<li><a href="https://juejin.im/post/5ab3f77df265da2392364341#heading-16" target="_blank" rel="noopener">2018年 你只会npm install吗？</a></li>
+<li><a href="https://segmentfault.com/a/1190000009709213" target="_blank" rel="noopener">npm与yarn缓存对比</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/22934066" target="_blank" rel="noopener">为什么我不使用shrinkwrap（lock）</a></li>
+<li><a href="https://segmentfault.com/a/1190000013214927" target="_blank" rel="noopener">pnpm介绍&lt;译文&gt;</a></li>
+<li><a href="https://github.com/neal1991/articles-translator/blob/master/Npm,%20yarn%E4%BB%A5%E5%8F%8Apnpm%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84.md" target="_blank" rel="noopener">三大包管理进行对比</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/05/es6深入 第四章/" rel="next" title="第四章 函数的扩展">
+                <i class="fa fa-chevron-left"></i> 第四章 函数的扩展
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/03/数据结构（排序）/" rel="prev" title="数据结构排序算法">
+                数据结构排序算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg"
+                alt="Genluo" />
+            
+              <p class="site-author-name" itemprop="name">Genluo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/vivatoviva" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="1461304646@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、commonJS规范"><span class="nav-number">1.</span> <span class="nav-text">一、commonJS规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、npm基本介绍"><span class="nav-number">2.</span> <span class="nav-text">二、npm基本介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、包结构与包描述文件"><span class="nav-number">3.</span> <span class="nav-text">三、包结构与包描述文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、commonJS规范中包结构"><span class="nav-number">3.1.</span> <span class="nav-text">1、commonJS规范中包结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、commonJS-包描述文件"><span class="nav-number">3.2.</span> <span class="nav-text">2、commonJS 包描述文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、npm-包描述文件"><span class="nav-number">3.3.</span> <span class="nav-text">3、npm 包描述文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、依赖树概念"><span class="nav-number">4.</span> <span class="nav-text">四、依赖树概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、模块查找方式（深入浅出Nodejs-p16）"><span class="nav-number">5.</span> <span class="nav-text">五、模块查找方式（深入浅出Nodejs p16）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、三个步骤"><span class="nav-number">5.1.</span> <span class="nav-text">1、三个步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、路径分析和文件定位"><span class="nav-number">5.2.</span> <span class="nav-text">2、路径分析和文件定位</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、安装依赖"><span class="nav-number">6.</span> <span class="nav-text">六、安装依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、扁平化依赖"><span class="nav-number">6.1.</span> <span class="nav-text">1、扁平化依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、模块安装过程"><span class="nav-number">6.2.</span> <span class="nav-text">2、模块安装过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#npm-v2解析包的依赖关系"><span class="nav-number">6.2.1.</span> <span class="nav-text">npm v2解析包的依赖关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#npm-v3解析包的依赖关系"><span class="nav-number">6.2.2.</span> <span class="nav-text">npm v3解析包的依赖关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#npm-v3模块去重"><span class="nav-number">6.2.3.</span> <span class="nav-text">npm v3模块去重</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、全局安装和局部安装"><span class="nav-number">6.3.</span> <span class="nav-text">3、全局安装和局部安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、缓存目录"><span class="nav-number">7.</span> <span class="nav-text">七、缓存目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、npm缺陷"><span class="nav-number">8.</span> <span class="nav-text">八、npm缺陷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、npx：-包执行器"><span class="nav-number">9.</span> <span class="nav-text">九、npx： 包执行器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十、常用命令"><span class="nav-number">10.</span> <span class="nav-text">十、常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十一、学习资料"><span class="nav-number">11.</span> <span class="nav-text">十一、学习资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Genluo</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1274562140&web_id=1274562140" language="JavaScript"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "ejARfLJyRPie3F2fgmhWiqhb-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "ejARfLJyRPie3F2fgmhWiqhb-gzGzoHsz",
+                'X-LC-Key': "uae7MGQ7caGIE2W6pE5mvqSL",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

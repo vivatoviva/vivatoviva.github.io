@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="缓存的分类缓存是一个比较大的知识点，同时也是一个极大提高性能的点，缓存有很多种，常见的有浏览器缓存、服务器缓存、代理服务器缓存、CDN缓存、">
+<meta name="keywords" content="vivatoviva">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web性能优化之缓存">
+<meta property="og:url" content="http://blogoog.com/2018/08/28/性能优化之缓存/index.html">
+<meta property="og:site_name" content="Genluo">
+<meta property="og:description" content="缓存的分类缓存是一个比较大的知识点，同时也是一个极大提高性能的点，缓存有很多种，常见的有浏览器缓存、服务器缓存、代理服务器缓存、CDN缓存、">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2017/12/31/160a9f21130bee6b?imageView2/0/w/1280/h/960/ignore-error/1">
+<meta property="og:image" content="https://image-static.segmentfault.com/292/633/2926334056-56fe382bb7a63_articlex">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-8-22/46733075.jpg">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-8-22/72259036.jpg">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/14853214.jpg">
+<meta property="og:updated_time" content="2018-08-26T17:13:47.540Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web性能优化之缓存">
+<meta name="twitter:description" content="缓存的分类缓存是一个比较大的知识点，同时也是一个极大提高性能的点，缓存有很多种，常见的有浏览器缓存、服务器缓存、代理服务器缓存、CDN缓存、">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2017/12/31/160a9f21130bee6b?imageView2/0/w/1280/h/960/ignore-error/1">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blogoog.com/2018/08/28/性能优化之缓存/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>web性能优化之缓存 | Genluo</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Genluo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/28/性能优化之缓存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Genluo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Genluo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">web性能优化之缓存
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-28 08:43:00" itemprop="dateCreated datePublished" datetime="2018-08-28T08:43:00+08:00">2018-08-28</time>
+            
+            
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-27 01:13:47" itemprop="dateModified" datetime="2018-08-27T01:13:47+08:00">2018-08-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/web-前端/" itemprop="url" rel="index"><span itemprop="name">web 前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/28/性能优化之缓存/" class="leancloud_visitors" data-flag-title="web性能优化之缓存">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="缓存的分类"><a href="#缓存的分类" class="headerlink" title="缓存的分类"></a>缓存的分类</h1><p>缓存是一个比较大的知识点，同时也是一个极大提高性能的点，缓存有很多种，常见的有浏览器缓存、服务器缓存、代理服务器缓存、CDN缓存、</p>
+<a id="more"></a>
+<h1 id="http协议"><a href="#http协议" class="headerlink" title="http协议"></a>http协议</h1><blockquote>
+<p>客户端在请求资源的时候是这样的，①客户端读取请求报文，并对报文进行解析，提取url和各种首部②然后查询是否有本地副本，如果没有则去服务器进行下载并且保存在本地③接着会查看副本足够新鲜（新鲜度检测），如果缓存已经失效就会询问服务器是否有更新，服务器就会用新的首部和已缓存的主体来构建一条响应报文，④发送给客户端</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2017/12/31/160a9f21130bee6b?imageView2/0/w/1280/h/960/ignore-error/1" alt=""><br><img src="https://image-static.segmentfault.com/292/633/2926334056-56fe382bb7a63_articlex" alt="此处输入图片的描述"></p>
+<h1 id="web缓存相关知识"><a href="#web缓存相关知识" class="headerlink" title="web缓存相关知识"></a>web缓存相关知识</h1><blockquote>
+<p>根据缓存处理方式，可以将缓存分为两种，一种是强缓存，一种是协商缓存</p>
+</blockquote>
+<h3 id="请求过程"><a href="#请求过程" class="headerlink" title="请求过程"></a>请求过程</h3><ul>
+<li>浏览器第一次跟服务器请求一个资源，服务器在返回这个资源的同时，在respone的header加上Expires或者Cache-Control的header</li>
+<li>浏览器在接收到这个资源后，会把这个资源连同所有response header一起缓存下来（所以如果缓存命中的话，请求返回的header并不是来自服务器，而是来自之前缓存的header）；</li>
+<li>浏览器再请求这个资源时，先从缓存中寻找，找到这个资源后，拿出它的Expires跟当前的请求时间比较，如果请求时间在Expires指定的时间之前，就能命中缓存，否则就不行。（浏览器再请求这个资源时，先从缓存中寻找，找到这个资源后，根据它<strong>第一次的请求时间</strong>和<strong>Cache-Control设定的有效期</strong>，计算出一个资源过期时间，再拿这个过期时间跟当前的请求时间比较，如果请求时间在过期时间之前，就能命中缓存，否则就不行。）（强缓存命中过程）</li>
+<li>如果强缓存没有命中，浏览器直接从服务器加载资源时，同时更新相关缓存（协商缓存）<ul>
+<li>服务器决策，返回 302，同时更新相关字段（缓存协商）</li>
+<li>服务器决策，返回 200，直接替换相关缓存（缓存协商）</li>
+</ul>
+</li>
+</ul>
+<h3 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h3><p>强缓存主要是响应头采用的Cache-Control和Expires进行控制的，其中Expires是http1.0中定义的，它指定了一个<strong>绝对的过期时间</strong>，而Cache-Control是http1.1规定的。Cache-Control:max-age定义了一个<strong>最大使用期</strong>，就是从第一次生成文档到缓存不再生效的合法生存日期。由于Expires是HTTP1.0时代的产物，因此设  计之初就存在着一些缺陷，如果本地时间和服务器时间相差太大，就会导致缓存错乱。这两个字段同时使用的时候Cache-Control的优先级更高一点。<br>这两个字段的效果是类似的，当浏览器请求这个资源的时候，先从缓存中中寻找，找到这个资源后，根据这个资源的第一次请求时间和Cache-Control设定的有效期计算出一个资源的过期时间，然后再拿这个过期时间和当前请求时间进行对比，如果请求时间在过期时间之内，则直接命中缓存，返回200（from cache）否则进行协商缓存（服务器验证）</p>
+<h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>强缓存机制如果检测到缓存失效，就会由服务器确定缓存资源是否可用，这种缓存机制被称之为协商缓存，浏览器在请求的时候会带上if-None-Match（对应缓存中的Etag），或者带上if-Modified-Since（对应缓存头部的Last-Modified）服务器根据请求头上的这两个字段来判断资源是否有效，一旦资源过期，则服务器将会返回新资源到客户端，负责将会返回304，客户端直接使用本地缓存，从而保证资源的有效性（如果本地缓存中header没有Etag、Last-Modified则不会进行如此步骤，直接返回200）</p>
+<p>要注意，响应头同时存在if-None-Match(Etag)和if-Modified-Since(Last-Modified)的时候，服务器会首先对Etag进行对比，其后才是对Last-Modified进行对比</p>
+<p><strong>普通刷新会启用弱缓存，忽略强缓存。只有在地址栏或收藏夹输入网址、通过链接引用资源等情况下，浏览器才会启用强缓存，具体相关规则请查看用户行为对缓存的影响</strong></p>
+<h3 id="相关参数"><a href="#相关参数" class="headerlink" title="相关参数"></a>相关参数</h3><ul>
+<li>Expires<ul>
+<li>该字段是http1.0规范，值为一个GMT格式的时间字符串，因为这个值是一个绝对时间，当用户本地时间和服务器时间相差比较大的时候会导致缓存混乱，需要和Last-Modified结合使用</li>
+</ul>
+</li>
+<li>Cache-Cache<ul>
+<li>max-age： 指定设置缓存的最大的有效时间，单位为秒</li>
+<li>s-maxage： 同max-age，只用于共享缓存（比如CDN缓存）。</li>
+<li>no-cache：设置了no-cache之后并不代表浏览器不缓存，而是在缓存前要向服务器确认资源是否被更改。因此有的时候只设置no-cache防止缓存还是不够保险，还可以加上private指令，将过期时间设为过去的时间</li>
+<li>no-store：直接禁止浏览器缓存数据，每次用户请求该资源，都会向服务器发送一个请求，每次都会下载完整的资源。</li>
+<li>public：可以被所有的用户缓存，包括终端用户和CDN等中间代理服务器。</li>
+<li>private：只能被终端用户的浏览器缓存，不允许CDN等中继缓存服务器对其缓存。</li>
+<li>must-revalidate： 告诉浏览器、缓存服务器，本地副本过期前，可以使用本地副本；本地副本一旦过期，必须去<strong>源服务器</strong>进行有效性校验。</li>
+<li><img src="http://oquq74tfk.bkt.clouddn.com/18-8-22/46733075.jpg" alt=""></li>
+</ul>
+</li>
+<li>Etag<ul>
+<li>根据实体内容生成一段hash字符串，表示资源状态，由服务器产生，浏览器会将这串字符串传回服务器，验证资源是否已经修改，如果没有修改，过程如下：</li>
+<li>解决使用Last-Modified存在的一些问题<ul>
+<li>a、某些服务器不能精确得到资源的最后修改时间，这样就无法通过最后修改时间判断资源是否更新</li>
+<li>b、如果资源修改非常频繁，在秒以下的时间内进行修改，而Last-modified只能精确到秒 </li>
+<li>c、一些资源的最后修改时间改变了，但是内容没改变，使用ETag就认为资源还是没有修改的。 </li>
+</ul>
+</li>
+<li><img src="http://oquq74tfk.bkt.clouddn.com/18-8-22/72259036.jpg" alt=""></li>
+</ul>
+</li>
+<li>Date：Date头域表示消息发送的时间，缓存在评估响应的新鲜度时要用到。</li>
+<li>Age：当代理服务器用自己缓存的实体去响应请求时，用该头部表明该实体从产生到现在经过多长时间了。</li>
+</ul>
+<h3 id="缓存失效时间的计算"><a href="#缓存失效时间的计算" class="headerlink" title="缓存失效时间的计算"></a>缓存失效时间的计算</h3><ul>
+<li><p>修正收到时间：<br><code>corrected_received_age  = max(now - date_value, age_value)</code></p>
+</li>
+<li><p>资源存活时间：<br><code>corrected_initial_age = corrected_received_age+ (now - request_time)</code></p>
+</li>
+<li>资源有效期：<ul>
+<li>如果有max-age<ul>
+<li><code>freshness_lifetime = max_age_value</code></li>
+</ul>
+</li>
+<li>如果有expires<ul>
+<li><code>freshness_lifetime = expires_value - date_value // 上文提到的 Date 头</code></li>
+</ul>
+</li>
+<li>两者都没有的话<ul>
+<li><code>freshness_lifetime = (now - last_modified_value) * fraction</code><blockquote>
+<p>fraction 是一个不大于一的数，通常会设为 10%，也就是说一个资源距离上一次更新有 10 天的话，那么它的缓存时间就是 1 天（10 * 10%），只要资源存活时间在一天之内那么它就是没有过期的。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对比资源存活时间和资源有效期就可以得到资源是否过期</li>
+</ul>
+<h3 id="用户行为对缓存的影响"><a href="#用户行为对缓存的影响" class="headerlink" title="用户行为对缓存的影响"></a>用户行为对缓存的影响</h3><table>
+<thead>
+<tr>
+<th>用户操作</th>
+<th>Expires/Cache-Control</th>
+<th>Last-Modied/Etag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>地址栏回车</td>
+<td>有效</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>页面链接跳转</td>
+<td>有效</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>新开窗口</td>
+<td>有效</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>前进回退</td>
+<td>有效</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>F5刷新</td>
+<td>无效</td>
+<td>有效</td>
+</tr>
+<tr>
+<td>Ctrl+F5强制刷新</td>
+<td>无效</td>
+<td>无效</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://oquq74tfk.bkt.clouddn.com/18-8-26/14853214.jpg" alt=""></p>
+<h3 id="from-disk-cache和from-memory-cache"><a href="#from-disk-cache和from-memory-cache" class="headerlink" title="from disk cache和from memory cache"></a>from disk cache和from memory cache</h3><blockquote>
+<p>因为chrome在高版本中更新了缓存策略，所以有两种缓存方式，分别是from disk cache（磁盘缓存）和from memory cache（内存缓存）</p>
+</blockquote>
+<h1 id="性能优化点"><a href="#性能优化点" class="headerlink" title="性能优化点"></a>性能优化点</h1><ul>
+<li>配置超长时间的本地缓存—节省带宽，提高性能</li>
+<li>采用内容摘要作为缓存更新依据—精确的缓存控制静态资源</li>
+<li>CDN部署—优化网络请求</li>
+<li>资源发布路径实现非覆盖式发布—平滑升级</li>
+</ul>
+<h1 id="nginx配置缓存"><a href="#nginx配置缓存" class="headerlink" title="nginx配置缓存"></a>nginx配置缓存</h1><blockquote>
+<p>推荐使用Varnish做缓存服务器</p>
+</blockquote>
+<p>源服务器进行设置</p>
+<p><code>源服务器就是拥有真正静态文件或者动态生成HTML的服务器，它有两个职责①请求提供静态和动态内容②通过http缓存头决定如何进行缓存</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 仅仅是实例，可以根据项目需求自己进行设计</span><br><span class="line"></span><br><span class="line">location ~* \.(?:manifest|appcache|html?|xml|json)$ &#123;</span><br><span class="line">    expires -1;</span><br><span class="line">    # access_log logs/static.log; # I don&apos;t usually include a static log</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~* \.(?:rss|atom)$ &#123;</span><br><span class="line">    expires 1h;</span><br><span class="line">    add_header Cache-Control &quot;public&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~* \.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|mp4|ogg|ogv|webm|htc)$ &#123;</span><br><span class="line">    expires 1M;</span><br><span class="line">    access_log off;</span><br><span class="line">    add_header Cache-Control &quot;public&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location ~* \.(?:css|js)$ &#123;</span><br><span class="line">    expires 1y;</span><br><span class="line">    access_log off;</span><br><span class="line">    add_header Cache-Control &quot;public&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>缓存服务器进行设置（暂时不接触）</p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://segmentfault.com/a/1190000008956069" target="_blank" rel="noopener">强缓存和协商缓存 - sf.gg</a></li>
+<li><a href="http://www.alloyteam.com/2016/03/discussion-on-web-caching/#prettyPhoto" target="_blank" rel="noopener">腾讯相关实践 - 腾讯官方网站</a></li>
+<li><a href="https://www.zhihu.com/question/20790576" target="_blank" rel="noopener">前端工程化部署 -知乎</a></li>
+<li><a href="https://www.jianshu.com/p/5d1ff7f545b2" target="_blank" rel="noopener">nginx缓存最佳实践 - 简书</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching_FAQ" target="_blank" rel="noopener">http缓存 - MDN</a></li>
+<li><a href="https://shijianan.com/2017/05/25/http-cache-age-calc/" target="_blank" rel="noopener">http缓存失效计算 - </a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/27/前端存储md/" rel="next" title="前端的存储三种方式">
+                <i class="fa fa-chevron-left"></i> 前端的存储三种方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg"
+                alt="Genluo" />
+            
+              <p class="site-author-name" itemprop="name">Genluo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/vivatoviva" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="1461304646@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存的分类"><span class="nav-number">1.</span> <span class="nav-text">缓存的分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http协议"><span class="nav-number">2.</span> <span class="nav-text">http协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web缓存相关知识"><span class="nav-number">3.</span> <span class="nav-text">web缓存相关知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请求过程"><span class="nav-number">3.0.1.</span> <span class="nav-text">请求过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强缓存"><span class="nav-number">3.0.2.</span> <span class="nav-text">强缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协商缓存"><span class="nav-number">3.0.3.</span> <span class="nav-text">协商缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关参数"><span class="nav-number">3.0.4.</span> <span class="nav-text">相关参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存失效时间的计算"><span class="nav-number">3.0.5.</span> <span class="nav-text">缓存失效时间的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户行为对缓存的影响"><span class="nav-number">3.0.6.</span> <span class="nav-text">用户行为对缓存的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from-disk-cache和from-memory-cache"><span class="nav-number">3.0.7.</span> <span class="nav-text">from disk cache和from memory cache</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#性能优化点"><span class="nav-number">4.</span> <span class="nav-text">性能优化点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx配置缓存"><span class="nav-number">5.</span> <span class="nav-text">nginx配置缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文档"><span class="nav-number">6.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Genluo</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1274562140&web_id=1274562140" language="JavaScript"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "ejARfLJyRPie3F2fgmhWiqhb-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "ejARfLJyRPie3F2fgmhWiqhb-gzGzoHsz",
+                'X-LC-Key': "uae7MGQ7caGIE2W6pE5mvqSL",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
