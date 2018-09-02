@@ -117,7 +117,9 @@
 <meta property="og:description" content="这段时间在学习缓存优化，在进行LS缓存优化的时候，动态插入script标签的时候，代码执行顺序前后会出错，但是代码插入到html中的顺序是正确的，思考了很久，最后发现这是 script的async的影响，但是通过这个过程发现自己对于页面渲染和代码执行顺序还是很模糊啊，一直想研究webkit，这次就做一个先驱吧，先行了解一波web页面是如何渲染出来">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-9-1/14451291.jpg">
-<meta property="og:updated_time" content="2018-09-02T11:32:16.612Z">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-9-1/414026.jpg">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-9-2/56168940.jpg">
+<meta property="og:updated_time" content="2018-09-02T11:52:34.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="web页面进行渲染">
 <meta name="twitter:description" content="这段时间在学习缓存优化，在进行LS缓存优化的时候，动态插入script标签的时候，代码执行顺序前后会出错，但是代码插入到html中的顺序是正确的，思考了很久，最后发现这是 script的async的影响，但是通过这个过程发现自己对于页面渲染和代码执行顺序还是很模糊啊，一直想研究webkit，这次就做一个先驱吧，先行了解一波web页面是如何渲染出来">
@@ -381,7 +383,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-02 19:32:16" itemprop="dateModified" datetime="2018-09-02T19:32:16+08:00">2018-09-02</time>
+                <time title="修改时间：2018-09-02 19:52:34" itemprop="dateModified" datetime="2018-09-02T19:52:34+08:00">2018-09-02</time>
               
             
           </span>
@@ -466,7 +468,7 @@
 <ul>
 <li>CSS 不会阻塞 DOM 的解析，但会阻塞 DOM 渲染。</li>
 <li>JS 阻塞 DOM 解析，但聪明的浏览器会”偷看”DOM，预先下载相关资源。</li>
-<li>浏览器遇到 <script>且没有defer或async属性的标签时，会触发页面渲染（构建出rendering tree），因而如果前面CSS资源尚未加载完毕时，浏览器会等待它加载完毕再执行脚本。所以这时候CSSOM会阻塞javascript的执行，javascript执行会阻塞DOM的构建</li>
+<li>浏览器遇到 <code>&lt;script&gt;</code>且没有<code>defer</code>或<code>async</code>属性的标签时，会触发页面渲染（构建出<code>rendering tree</code>），因而如果前面<code>CSS</code>资源尚未加载完毕时，浏览器会等待它加载完毕再执行脚本。所以这时候<code>CSSOM</code>会阻塞<code>javascript</code>的执行，<code>javascript</code>执行会阻塞<code>DOM</code>的构建</li>
 </ul>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
 <li>为什么js放到body最后、css放到head中比较好？</li>
@@ -480,9 +482,9 @@
 </blockquote>
 <h4 id="触发的方法如下："><a href="#触发的方法如下：" class="headerlink" title="触发的方法如下："></a>触发的方法如下：</h4><ul>
 <li>元素属性的变化<ul>
-<li>盒模型相关的属性: width，height，margin，display，border，etc</li>
-<li>定位属性及浮动相关的属性: top,position,float，etc</li>
-<li>改变节点内部文字结构也会触发回流: text-align, overflow, font-size, line-height, vertival-align，etc</li>
+<li>盒模型相关的属性: <code>width</code>，<code>height</code>，<code>margin</code>，<code>display</code>，<code>border</code>，etc</li>
+<li>定位属性及浮动相关的属性: <code>top</code>,<code>position</code>,<code>float</code>，<code>etc</code></li>
+<li>改变节点内部文字结构也会触发回流: <code>text-align</code>, <code>overflow</code>, <code>font-size</code>, <code>line-height</code>, <code>vertival-align</code>，etc</li>
 </ul>
 </li>
 <li>调整窗口大小</li>
@@ -490,35 +492,35 @@
 <li>元素内容变化，尤其是输入控件</li>
 <li>dom操作</li>
 <li>css伪类激活</li>
-<li>计算元素的offsetWidth、offsetHeight、clientWidth、clientHeight、width、height、scrollTop、scrollHeight</li>
+<li>计算元素的<code>offsetWidth</code>、<code>offsetHeight</code>、<code>clientWidth</code>、<code>clientHeight</code>、<code>width</code>、<code>height</code>、<code>scrollTop</code>、<code>scrollHeight</code></li>
 </ul>
 <h4 id="浏览器中的执行过程"><a href="#浏览器中的执行过程" class="headerlink" title="浏览器中的执行过程"></a>浏览器中的执行过程</h4><ul>
-<li>Recalculate Style：浏览器计算改变过后的样式</li>
-<li>Layout：这个过程就是我们说得reflow回流过程</li>
-<li>Update Layer Tree：更新Layer Tree</li>
-<li>Paint：图层的绘制过程</li>
-<li>Composite Layers：合并多个图层</li>
+<li><code>Recalculate Style</code>：浏览器计算改变过后的样式</li>
+<li><code>Layout</code>：这个过程就是我们说得reflow回流过程</li>
+<li><code>Update Layer Tree</code>：更新Layer Tree</li>
+<li><code>Paint</code>：图层的绘制过程</li>
+<li><code>Composite Layers</code>：合并多个图层</li>
 </ul>
 <h3 id="repaint"><a href="#repaint" class="headerlink" title="repaint"></a>repaint</h3><blockquote>
 <p>根据rendering tree渲染生成页面</p>
 </blockquote>
 <h4 id="触发的方法如下：-1"><a href="#触发的方法如下：-1" class="headerlink" title="触发的方法如下："></a>触发的方法如下：</h4><ul>
-<li>页面中的元素更新样式风格相关的属性时就会触发重绘，如background，color，cursor，visibility，etc</li>
+<li>页面中的元素更新样式风格相关的属性时就会触发重绘，如<code>background</code>，<code>color</code>，<code>cursor</code>，<code>visibility</code>，etc</li>
 </ul>
 <h4 id="浏览器执行过程如下："><a href="#浏览器执行过程如下：" class="headerlink" title="浏览器执行过程如下："></a>浏览器执行过程如下：</h4><ul>
-<li>Recalculate Style：浏览器计算改变过后的样式</li>
-<li>Update Layer Tree：更新Layer Tree</li>
-<li>Paint：图层的绘制过程</li>
-<li>Composite Layers：合并多个图层</li>
+<li><code>Recalculate Style</code>：浏览器计算改变过后的样式</li>
+<li><code>Update Layer Tree</code>：更新Layer Tree</li>
+<li><code>Paint</code>：图层的绘制过程</li>
+<li><code>Composite Layers</code>：合并多个图层</li>
 </ul>
 <h3 id="浏览器对于reflow的优化"><a href="#浏览器对于reflow的优化" class="headerlink" title="浏览器对于reflow的优化"></a>浏览器对于reflow的优化</h3><blockquote>
 <p>浏览器为了防止我们犯二把多次reflow操作放在循环中而引发浏览器假死，做了一个聪明的小动作。它会收集reflow操作到缓存队列中直到一定的规模或者过了特定的时间，再一次性地flush队列，反馈到render tree中，这样就将多次的reflow操作减少为少量的reflow。如果我们想要在一次reflow过后就获取元素变动过后的值呢？这个时候浏览器为了获取真实的值就不得不立即flush缓存的队列。这些值包括：</p>
 </blockquote>
 <ul>
-<li>offsetTop/Left/Width/Height</li>
-<li>scrollTop/Left/Width/Height</li>
-<li>clientTop/Left/Width/Height</li>
-<li>getComputedStyle(), or currentStyle in IE</li>
+<li><code>offsetTop</code>/<code>Left</code>/<code>Width</code>/<code>Height</code></li>
+<li><code>scrollTop</code>/<code>Left</code>/<code>Width</code>/<code>Height</code></li>
+<li><code>clientTop</code>/<code>Left</code>/<code>Width</code>/<code>Height</code></li>
+<li><code>getComputedStyle()</code>, or <code>currentStyle</code> in IE</li>
 </ul>
 <p>例如可通过下面两种方式进行测试</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 浏览器做优化，将多次reflow减少为少量的reflow</span><br><span class="line">document.addEventListener(&apos;DOMContentLoaded&apos;, function () &#123;</span><br><span class="line">    var date = new Date();</span><br><span class="line">    for (var i = 0; i &lt; 70000; i++) &#123;</span><br><span class="line">        var tmpNode = document.createElement(&quot;div&quot;);</span><br><span class="line">        tmpNode.innerHTML = &quot;test&quot; + i;</span><br><span class="line">        document.body.appendChild(tmpNode);</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(new Date() - date);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -533,15 +535,15 @@
 <ul>
 <li>defer </li>
 </ul>
-<p>defer表示延迟执行引入的javascript，即就是dom解析到defer属性的script脚本，不会停止解析，等到整个dom解析完毕后，按照defer-script顺序执行，执行完毕后触发DOMContentLoaded事件。</p>
+<p><code>defer</code>表示延迟执行引入的<code>javascript</code>，即就是dom解析到<code>defer</code>属性的<code>script</code>脚本，不会停止解析，等到整个dom解析完毕后，按照defer-script顺序执行，执行完毕后触发<code>DOMContentLoaded</code>事件。</p>
 <ul>
 <li>async </li>
 </ul>
-<p>async表示异步执行引入的script，与 defer 的区别在于，如果已经加载好，就会开始执行——无论此刻是 HTML 解析阶段还是 DOMContentLoaded 触发之后。需要注意的是，这种方式加载的 JavaScript 依然会阻塞 load 事件。换句话说，async-script 可能在 DOMContentLoaded 触发之前或之后执行，但一定在 load 触发之前执行。</p>
+<p><code>async</code>表示异步执行引入的<code>script</code>，与 <code>defer</code> 的区别在于，如果已经加载好，就会开始执行——无论此刻是 HTML 解析阶段还是 <code>DOMContentLoaded</code> 触发之后。需要注意的是，这种方式加载的 <code>JavaScript</code> 依然会阻塞 load 事件。换句话说，<code>async-script</code> 可能在 <code>DOMContentLoaded</code> 触发之前或之后执行，但一定在 load 触发之前执行。</p>
 <ul>
 <li>document.createElement</li>
 </ul>
-<p>这也就是自己这次遇见的问题，最终发现通过这种方式创建的script默认是异步的，所以来讲，动态创建的script是不会阻塞页面的，如果想要同步进行执行可以将async设置为false,如果使用这种方法创建link标签的话，实际测试chrome是不会阻塞渲染的。<br><img src="http://oquq74tfk.bkt.clouddn.com/18-9-1/414026.jpg" alt=""></p>
+<p>这也就是自己这次遇见的问题，最终发现通过这种方式创建的<code>script</code>默认是异步的，所以来讲，动态创建的<code>script</code>是不会阻塞页面的，如果想要同步进行执行可以将<code>async</code>设置为<code>false</code>,如果使用这种方法创建<code>link</code>标签的话，实际测试<code>chrome</code>是不会阻塞渲染的。<br><img src="http://oquq74tfk.bkt.clouddn.com/18-9-1/414026.jpg" alt=""></p>
 <ul>
 <li>上面两种js执行图解</li>
 </ul>
@@ -550,66 +552,66 @@
 <p>页面在渲染过程会触发很多事件，例如window.onload 等等，还有打开chrome network下面展示的DOMContentLoaded时间和load时间等等，这些到底在页面渲染的哪个时间点执行？下面就是结合浏览器和页面渲染图解来详细探讨一番</p>
 </blockquote>
 <h3 id="DOM-API的事件"><a href="#DOM-API的事件" class="headerlink" title="DOM API的事件"></a>DOM API的事件</h3><ul>
-<li><p>DOMContentLoaded</p>
+<li><p><code>DOMContentLoaded</code></p>
 <blockquote>
 <p>加载完页面，解析完所有标签（不包括执行CSS和JS），执行每个同步的script标签中的JS，执行完毕后然后触发。补全表单也是在这个时间点后进行补全</p>
 </blockquote>
 </li>
-<li><p>load</p>
+<li><p><code>load</code></p>
 <blockquote>
 <p>window.onload: 所有文件包括样式表，图片和其他资源下载完成后触发</p>
 </blockquote>
 </li>
 </ul>
 <ul>
-<li><p>readystatechange</p>
+<li><p><code>readystatechange</code></p>
 <blockquote>
-<p>通过document.readyState 可以读取当前页面加载状态，会有三个值：①loading：加载 -  dom正在加载②interactive互动-文档已被解析，但是诸如图像，样式表和框架之类的子资源仍然在加载③comlete 文档所有资源完成加载，状态表示load即将被触发</p>
+<p>通过<code>document.readyState</code> 可以读取当前页面加载状态，会有三个值：①loading：加载 -  dom正在加载②interactive互动-文档已被解析，但是诸如图像，样式表和框架之类的子资源仍然在加载③comlete 文档所有资源完成加载，状态表示load即将被触发</p>
 </blockquote>
 </li>
-<li><p>beforeunload</p>
+<li><p><code>beforeunload</code></p>
 <blockquote>
 <p>用户即将离开或者关闭窗口时候</p>
 </blockquote>
 </li>
-<li><p>unload</p>
+<li><p><code>unload</code></p>
 <blockquote>
 <p>用户离开页面的时候</p>
 </blockquote>
 </li>
 </ul>
 <h3 id="页面加载中的时间点"><a href="#页面加载中的时间点" class="headerlink" title="页面加载中的时间点"></a>页面加载中的时间点</h3><ul>
-<li>domLoading：这是整个过程的起始时间戳，浏览器即将开始解析第一批收到的 HTML 文档字节。</li>
-<li>domInteractive：表示浏览器完成对所有 HTML 的解析并且 DOM 构建完成的时间点。</li>
-<li>domContentLoaded：表示 DOM 准备就绪并且没有样式表阻止 JavaScript 执行的时间点，这意味着现在我们可以构建渲染树了。</li>
+<li><code>domLoading</code>：这是整个过程的起始时间戳，浏览器即将开始解析第一批收到的 HTML 文档字节。</li>
+<li><code>domInteractive</code>：表示浏览器完成对所有 HTML 的解析并且 DOM 构建完成的时间点。</li>
+<li><code>domContentLoaded</code>：表示 DOM 准备就绪并且没有样式表阻止 JavaScript 执行的时间点，这意味着现在我们可以构建渲染树了。</li>
 <li>许多 JavaScript 框架都会等待此事件发生后，才开始执行它们自己的逻辑。因此，浏览器会捕获 EventStart 和 EventEnd 时间戳，让我们能够追踪执行所花费的时间。</li>
-<li>domComplete：顾名思义，所有处理完成，并且网页上的所有资源（图像等）都已下载完毕，也就是说，加载转环已停止旋转。</li>
-<li>loadEvent：作为每个网页加载的最后一步，浏览器会触发 onload 事件，以便触发额外的应用逻辑。</li>
+<li><code>domComplete</code>：顾名思义，所有处理完成，并且网页上的所有资源（图像等）都已下载完毕，也就是说，加载转环已停止旋转。</li>
+<li><code>loadEvent</code>：作为每个网页加载的最后一步，浏览器会触发 onload 事件，以便触发额外的应用逻辑。</li>
 </ul>
 <p>HTML 规范中规定了每个事件的具体条件：应在何时触发、应满足什么条件等等。对我们而言，我们将重点放在与关键渲染路径有关的几个关键里程碑上：</p>
 <ul>
-<li>domInteractive 表示 DOM 准备就绪的时间点。</li>
-<li>domContentLoaded 一般表示 DOM 和 CSSOM 均准备就绪的时间点。如果没有阻塞解析器的 JavaScript，则 DOMContentLoaded 将在 domInteractive 后立即触发。</li>
-<li>domComplete 表示网页及其所有子资源都准备就绪的时间点。</li>
+<li><code>domInteractive</code> 表示 DOM 准备就绪的时间点。</li>
+<li><code>domContentLoaded</code> 一般表示 DOM 和 CSSOM 均准备就绪的时间点。如果没有阻塞解析器的 <code>JavaScript</code>，则 <code>DOMContentLoaded</code> 将在 <code>domInteractive</code> 后立即触发。</li>
+<li><code>domComplete</code> 表示网页及其所有子资源都准备就绪的时间点。</li>
 </ul>
 <h1 id="js引擎执行js的过程"><a href="#js引擎执行js的过程" class="headerlink" title="js引擎执行js的过程"></a>js引擎执行js的过程</h1><blockquote>
 <p>js引擎是如何执行我们脚本中的js，这些过程清楚吗？前端一段时间拜读最新的忍者秘籍，当时就感觉这块不是很清楚</p>
 </blockquote>
-<p>直接看这个博文，讲的很棒<a href="https://juejin.im/post/5b879a9f6fb9a01a0f24a5e1">https://juejin.im/post/5b879a9f6fb9a01a0f24a5e1</a>, 后面在详细纠结一下这一块</p>
+<p>直接看这个博文，讲的很棒<a href="https://juejin.im/post/5b879a9f6fb9a01a0f24a5e1" target="_blank" rel="noopener">https://juejin.im/post/5b879a9f6fb9a01a0f24a5e1</a>, 后面在详细纠结一下这一块</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="https://juejin.im/post/5b879a9f6fb9a01a0f24a5e1">图解js执行 - 很棒</a></li>
-<li><a href="https://juejin.im/post/5b879e16f265da436d7e543c">页面渲染 - 性能优化</a></li>
-<li><a href="https://github.com/ljf0113/how-js-and-css-block-dom">css-、js阻塞DOM渲染</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/25279069">浏览器 渲染,绘制流程及性能优化</a></li>
-<li><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">浏览器工作原理解析</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/29418126">页面渲染-原理</a></li>
-<li><a href="https://juejin.im/post/5a9372895188257a6b06132e">reflow和replaint引发的性能问题</a></li>
-<li><a href="https://blog.csdn.net/luoshengyang/article/details/50661553">Chromium网页Graphics Layer Tree创建过程分析</a></li>
-<li><a href="https://github.com/fi3ework/Blog/issues/3">页面生命周期</a></li>
-<li><a href="https://developers.google.com/">chrome 工具说明</a></li>
-<li><a href="https://stackoverflow.com/questions/588040/window-onload-vs-document-onload">window.onload vs document.onload</a></li>
+<li><a href="https://juejin.im/post/5b879a9f6fb9a01a0f24a5e1" target="_blank" rel="noopener">图解js执行 - 很棒</a></li>
+<li><a href="https://juejin.im/post/5b879e16f265da436d7e543c" target="_blank" rel="noopener">页面渲染 - 性能优化</a></li>
+<li><a href="https://github.com/ljf0113/how-js-and-css-block-dom" target="_blank" rel="noopener">css-、js阻塞DOM渲染</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/25279069" target="_blank" rel="noopener">浏览器 渲染,绘制流程及性能优化</a></li>
+<li><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/" target="_blank" rel="noopener">浏览器工作原理解析</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/29418126" target="_blank" rel="noopener">页面渲染-原理</a></li>
+<li><a href="https://juejin.im/post/5a9372895188257a6b06132e" target="_blank" rel="noopener">reflow和replaint引发的性能问题</a></li>
+<li><a href="https://blog.csdn.net/luoshengyang/article/details/50661553" target="_blank" rel="noopener">Chromium网页Graphics Layer Tree创建过程分析</a></li>
+<li><a href="https://github.com/fi3ework/Blog/issues/3" target="_blank" rel="noopener">页面生命周期</a></li>
+<li><a href="https://developers.google.com/" target="_blank" rel="noopener">chrome 工具说明</a></li>
+<li><a href="https://stackoverflow.com/questions/588040/window-onload-vs-document-onload" target="_blank" rel="noopener">window.onload vs document.onload</a></li>
 </ul>
-</script></li></ul>
+
       
     </div>
 
@@ -834,7 +836,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#输入一个url到页面加载经过哪些步骤"><span class="nav-number">1.</span> <span class="nav-text">输入一个url到页面加载经过哪些步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端进行渲染"><span class="nav-number">2.</span> <span class="nav-text">客户端进行渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程图"><span class="nav-number">2.0.1.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#白话分析"><span class="nav-number">2.0.2.</span> <span class="nav-text">白话分析</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#输入一个url到页面加载经过哪些步骤"><span class="nav-number">1.</span> <span class="nav-text">输入一个url到页面加载经过哪些步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端进行渲染"><span class="nav-number">2.</span> <span class="nav-text">客户端进行渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程图"><span class="nav-number">2.0.1.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#白话分析"><span class="nav-number">2.0.2.</span> <span class="nav-text">白话分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">2.0.3.</span> <span class="nav-text">问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reflow和repaint"><span class="nav-number">3.</span> <span class="nav-text">reflow和repaint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reflow"><span class="nav-number">3.0.1.</span> <span class="nav-text">reflow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#触发的方法如下："><span class="nav-number">3.0.1.1.</span> <span class="nav-text">触发的方法如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器中的执行过程"><span class="nav-number">3.0.1.2.</span> <span class="nav-text">浏览器中的执行过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#repaint"><span class="nav-number">3.0.2.</span> <span class="nav-text">repaint</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#触发的方法如下：-1"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">触发的方法如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器执行过程如下："><span class="nav-number">3.0.2.2.</span> <span class="nav-text">浏览器执行过程如下：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器对于reflow的优化"><span class="nav-number">3.0.3.</span> <span class="nav-text">浏览器对于reflow的优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免reflow和repaint带来的性能开销"><span class="nav-number">3.0.4.</span> <span class="nav-text">避免reflow和repaint带来的性能开销</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#defer和async"><span class="nav-number">4.</span> <span class="nav-text">defer和async</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#页面渲染触发的事件"><span class="nav-number">5.</span> <span class="nav-text">页面渲染触发的事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-API的事件"><span class="nav-number">5.0.1.</span> <span class="nav-text">DOM API的事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面加载中的时间点"><span class="nav-number">5.0.2.</span> <span class="nav-text">页面加载中的时间点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js引擎执行js的过程"><span class="nav-number">6.</span> <span class="nav-text">js引擎执行js的过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
