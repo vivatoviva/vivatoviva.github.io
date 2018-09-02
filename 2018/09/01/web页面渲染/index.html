@@ -108,36 +108,27 @@
 
 
 
-  <meta name="description" content="引用自王福朋老师的经典博文，加上自己的理解完成的一篇博文  一、一切都是对象？“一切都是对象”这句话的重点在于如何去理解“对象”这个概念。">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="这段时间在学习缓存优化，在进行LS缓存优化的时候，动态插入script标签的时候，代码执行顺序前后会出错，但是代码插入到html中的顺序是正确的，思考了很久，最后发现这是 script的async的影响，但是通过这个过程发现自己对于页面渲染和代码执行顺序还是很模糊啊，一直想研究webkit，这次就做一个先驱吧，先行了解一波web页面是如何渲染出来">
+<meta name="keywords" content="vivatoviva">
 <meta property="og:type" content="article">
-<meta property="og:title" content="原型、原型链">
-<meta property="og:url" content="http://blogoog.com/2018/08/27/一、一切都是对象？/index.html">
+<meta property="og:title" content="web页面进行渲染">
+<meta property="og:url" content="http://blogoog.com/2018/09/01/web页面渲染/index.html">
 <meta property="og:site_name" content="Genluo">
-<meta property="og:description" content="引用自王福朋老师的经典博文，加上自己的理解完成的一篇博文  一、一切都是对象？“一切都是对象”这句话的重点在于如何去理解“对象”这个概念。">
+<meta property="og:description" content="这段时间在学习缓存优化，在进行LS缓存优化的时候，动态插入script标签的时候，代码执行顺序前后会出错，但是代码插入到html中的顺序是正确的，思考了很久，最后发现这是 script的async的影响，但是通过这个过程发现自己对于页面渲染和代码执行顺序还是很模糊啊，一直想研究webkit，这次就做一个先驱吧，先行了解一波web页面是如何渲染出来">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg">
-<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/17-8-10/26737761.jpg">
-<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181509180812624.png">
-<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181510403153733.png">
-<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/17-8-10/50601507.jpg">
-<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181512068463597.png">
-<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181635128935132.png">
-<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181635468939277.png">
-<meta property="og:image" content="http://images.cnitblog.com/blog/138012/201409/181636252689920.png">
-<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg">
-<meta property="og:updated_time" content="2017-08-12T06:19:26.033Z">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-9-1/14451291.jpg">
+<meta property="og:updated_time" content="2018-09-02T11:32:16.612Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="原型、原型链">
-<meta name="twitter:description" content="引用自王福朋老师的经典博文，加上自己的理解完成的一篇博文  一、一切都是对象？“一切都是对象”这句话的重点在于如何去理解“对象”这个概念。">
-<meta name="twitter:image" content="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg">
+<meta name="twitter:title" content="web页面进行渲染">
+<meta name="twitter:description" content="这段时间在学习缓存优化，在进行LS缓存优化的时候，动态插入script标签的时候，代码执行顺序前后会出错，但是代码插入到html中的顺序是正确的，思考了很久，最后发现这是 script的async的影响，但是通过这个过程发现自己对于页面渲染和代码执行顺序还是很模糊啊，一直想研究webkit，这次就做一个先驱吧，先行了解一波web页面是如何渲染出来">
+<meta name="twitter:image" content="http://oquq74tfk.bkt.clouddn.com/18-9-1/14451291.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blogoog.com/2018/08/27/一、一切都是对象？/"/>
+  <link rel="canonical" href="http://blogoog.com/2018/09/01/web页面渲染/"/>
 
 
 
@@ -147,7 +138,7 @@
   };
 </script>
 
-  <title>原型、原型链 | Genluo</title>
+  <title>web页面进行渲染 | Genluo</title>
   
 
 
@@ -331,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/一、一切都是对象？/">
+    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/09/01/web页面渲染/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Genluo">
@@ -348,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">原型、原型链
+          <h1 class="post-title" itemprop="name headline">web页面进行渲染
               
             
           </h1>
@@ -373,7 +364,7 @@
                 
               
 
-              <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
+              <time title="创建时间：2018-09-01 18:00:00" itemprop="dateCreated datePublished" datetime="2018-09-01T18:00:00+08:00">2018-09-01</time>
             
             
             
@@ -390,7 +381,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2017-08-12 14:19:26" itemprop="dateModified" datetime="2017-08-12T14:19:26+08:00">2017-08-12</time>
+                <time title="修改时间：2018-09-02 19:32:16" itemprop="dateModified" datetime="2018-09-02T19:32:16+08:00">2018-09-02</time>
               
             
           </span>
@@ -407,7 +398,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/web-前端-优化/" itemprop="url" rel="index"><span itemprop="name">web 前端 优化</span></a></span>
 
                 
                 
@@ -421,7 +412,7 @@
 
           
           
-             <span id="/2018/08/27/一、一切都是对象？/" class="leancloud_visitors" data-flag-title="原型、原型链">
+             <span id="/2018/09/01/web页面渲染/" class="leancloud_visitors" data-flag-title="web页面进行渲染">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -452,81 +443,173 @@
       
 
       
-        <hr>
-<p><img src="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg" alt="此处输入图片的描述"></p>
-<blockquote>
-<p>引用自<a href="http://www.cnblogs.com/wangfupeng1988/p/3977924.html" target="_blank" rel="noopener">王福朋老师</a>的经典博文，加上自己的理解完成的一篇博文</p>
+        <p>这段时间在学习缓存优化，在进行LS缓存优化的时候，动态插入script标签的时候，代码执行顺序前后会出错，但是代码插入到html中的顺序是正确的，思考了很久，最后发现这是 script的async的影响，但是通过这个过程发现自己对于页面渲染和代码执行顺序还是很模糊啊，一直想研究webkit，这次就做一个先驱吧，先行了解一波web页面是如何渲染出来</p>
+<a id="more"></a>
+<h1 id="输入一个url到页面加载经过哪些步骤"><a href="#输入一个url到页面加载经过哪些步骤" class="headerlink" title="输入一个url到页面加载经过哪些步骤"></a>输入一个url到页面加载经过哪些步骤</h1><blockquote>
+<p>面试经常问道的问题，这个问题可以回答很有深度，涉及的面比较广，但是也可以回答的比较简单，如下：</p>
 </blockquote>
-<h2 id="一、一切都是对象？"><a href="#一、一切都是对象？" class="headerlink" title="一、一切都是对象？"></a>一、一切都是对象？</h2><p>“一切都是对象”这句话的重点在于如何去理解“对象”这个概念。<br><a id="more"></a></p>
-<h4 id="1-什么是对象（通俗）"><a href="#1-什么是对象（通俗）" class="headerlink" title="1.什么是对象（通俗）"></a>1.什么是对象（通俗）</h4><p>  <strong>对象就是属性的集合</strong></p>
-<h4 id="2-怎样创建对象"><a href="#2-怎样创建对象" class="headerlink" title="2. 怎样创建对象"></a>2. 怎样创建对象</h4><p>构造函数就是构建新对象的：<br>使用new来调用函数，或者说发生构造函数调用时：</p>
-<ol>
-<li>创建（或者构造）一个全新的对象</li>
-<li>这个新对象会被执行[[prototype]]连接</li>
-<li>这个新对象会被绑定到函数调用的this</li>
-<li>如果函数没有返回其他对象，那么new表达式中的函数调用会自动返回这个新对象。<pre><code>--91页
-</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'王福朋'</span>;</span><br><span class="line">    <span class="keyword">this</span>.year = <span class="number">1988</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn1 = <span class="keyword">new</span> Fn(); </span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> fn1)    <span class="comment">//Object类型</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>上面例子很简单，它能够说明：对象可以通过函数来创建的，但是说–对象都是通过函数创建的–有些人可能反驳：不对！因为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123; a: 10, b: 20 &#125;;</span><br><span class="line">var arr = [5, &apos;x&apos;, true];</span><br><span class="line">console.log(typeof obj) //Object</span><br><span class="line">console.log(typeof arr) //Object</span><br><span class="line"></span><br><span class="line">//（语法糖）相当与</span><br><span class="line">//var obj = new Object（）</span><br><span class="line">      obj.a = 10;</span><br><span class="line">      obj.b = 20;</span><br><span class="line">  var arr = new Array(）;</span><br><span class="line">      arr[0] = 5;</span><br><span class="line">      arr[1] = &apos;x&apos;;</span><br><span class="line">      arr[2] = true;</span><br><span class="line">   //这样就是function Array（）和function Object（）创建的对象</span><br><span class="line">   //证明了对象都是由函数创建的</span><br></pre></td></tr></table></figure>
-<h4 id="3-函数是通过什么创建的"><a href="#3-函数是通过什么创建的" class="headerlink" title="3.函数是通过什么创建的"></a>3.函数是通过什么创建的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> var sum = function (num1, num2) &#123;</span><br><span class="line">     return num1 + num2;</span><br><span class="line"> &#125;</span><br><span class="line"> var sum = new Function(&quot;num1&quot;, &quot;num2&quot;, &quot;return num1 + num2&quot;); </span><br><span class="line"> console.log(sum)   //function</span><br><span class="line"> </span><br><span class="line"> //函数是通过new Function（）构建的</span><br><span class="line"> </span><br><span class="line"> //这样就是function Array（）</span><br><span class="line"> //function Object（）</span><br><span class="line"> //function sum（），</span><br><span class="line"> //其中Object和Array，sum都是函数，这些函数都是通过new  Function（···）创建的，然后这些函数再去创造对应的对象，</span><br><span class="line"></span><br><span class="line">//function Function（），这个是实例化创建函数（函数的创建工厂）</span><br><span class="line"></span><br><span class="line">//现在将引用类型分为2种</span><br><span class="line">//一种是通过new Function创建的函数，另一种是通过function（构造函数）创建的对象</span><br></pre></td></tr></table></figure>
-<p><img src="http://oquq74tfk.bkt.clouddn.com/17-8-10/26737761.jpg" alt=""> </p>
-<p> 在 JavaScript中，函数是头等(first-class)对象，因为它们可以像任何其他对象一样具有属性和方法。它们与其他对象的区别在于函数可以被调用。</p>
-<p>—–简而言之，它们是Function 对象。</p>
-<h4 id="4-验证上面说法"><a href="#4-验证上面说法" class="headerlink" title="4.验证上面说法"></a>4.验证上面说法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">       function show(x) &#123;</span><br><span class="line">            //typeof输出类型的标识</span><br><span class="line">            console.log(typeof x);    // undefined</span><br><span class="line">            console.log(typeof 10);   // number</span><br><span class="line">            console.log(typeof &apos;abc&apos;); // string</span><br><span class="line">            console.log(typeof true);  // boolean</span><br><span class="line">            </span><br><span class="line">            //引用类型</span><br><span class="line">            console.log(typeof function () &#123;&#125;);  //function</span><br><span class="line">            console.log(typeof Array)            //function</span><br><span class="line">            console.log(typeof Object)           //function</span><br><span class="line">            </span><br><span class="line">            console.log(typeof [1, &apos;a&apos;, true]);    //object</span><br><span class="line">            console.log(typeof &#123; a: 10, b: 20 &#125;);  //object</span><br><span class="line">            console.log(typeof null);              //object</span><br><span class="line">            console.log(typeof new Number(10));    //object</span><br><span class="line">        &#125;</span><br><span class="line">        show();</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 5.总结：</span><br><span class="line">* 对象就是属性的集合</span><br><span class="line"></span><br><span class="line">* 对象都是由函数创建的</span><br><span class="line"></span><br><span class="line">* 函数实际上是new Function（）的实例对象，因此函数就是Function对象，可以像任何其他对象一样具有属性和方法。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">但是上面那张图片解释很奇怪，想一下，</span><br><span class="line">##### 问题一 ：function Function（）这个函数由什么创建的</span><br><span class="line">    console.log(typeof Function)   //function</span><br><span class="line">function Function（）用来创建函数，但他自身也是一个函数，难道是他自己创建自己的吗？，很奇怪，对吧。</span><br><span class="line"></span><br><span class="line">##### 问题二：Function 为什么判断即是对象也是函数（需要使用instanceof机制解决）</span><br></pre></td></tr></table></figure>
-<pre><code>//判断一个变量是不是对象很简单,引用类型的类型判断用instanceof
-//这个和instanceof查询机制有关
-var fn = function () {};
-console.log(fn instanceof Function);//true       
-
-//但是
-console.log(Function instanceof Object);  // true
-console.log(Function instanceof Function) //true
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">所以我们暂且将Function这个函数排除在外，下面所讲的函数都是由function Function（）实例化的不包括function Function（）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 二、prototype原型和\__proto__隐式原型</span><br><span class="line"></span><br><span class="line">上面说过函数也是一种对象。他也是属性的结合，可以自定义属性</span><br><span class="line"></span><br><span class="line">#### 1.函数的prototype属性</span><br><span class="line"></span><br><span class="line">Javascript中默认给**函数**一个属性--prototype。每个函数都有一个属性叫做prototype，这个prototype属性值是一个**对象**（属性的集合）默认的（）有一个叫做**constructor的属性，指向这个函数本身**</span><br><span class="line">![此处输入链接的描述][3]</span><br><span class="line">`SuperType.prototype.constructor === SuperType`</span><br><span class="line">superType是一个函数，右侧就是他的原型。</span><br><span class="line"></span><br><span class="line">我们可以在prototype中自定义一些属性</span><br></pre></td></tr></table></figure>
-<pre><code>function Fn() { }
-Fn.prototype.name = &apos;王福朋&apos;;
-Fn.prototype.getYear = function () {
-    return 1988;
-};
-console.log(Fn.prototype);
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">这时Fn的原型就添加了这几个属性</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![此处输入图片的描述][4]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">但是这样做有什么用？</span><br><span class="line"></span><br><span class="line">按照一段代码显示就是</span><br></pre></td></tr></table></figure>
-<pre><code>function Fn() { }
-Fn.prototype.name = &apos;王福朋&apos;;
-Fn.prototype.getYear = function () {
-    return 1988;
-};
-
-var fn = new Fn();
-console.log(fn);//出现__proto__属性
-console.log(fn.name);
-console.log(fn.getYear());
-console.log(fn.prototype);//undefined
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">这时Fn是一个函数，fn对象是Fn函数中new出来的，这样fn对象就可以调用Fn.prototype中的属性。</span><br><span class="line"></span><br><span class="line">#### 2.对象（函数对象）的\__proto__</span><br><span class="line"></span><br><span class="line">每个**对象（包括函数对象）**都有一个隐藏的属性“\__proto__”，这个属性**引用**的**创建这个对象的函数的prototype**。这个隐藏的属性成为**隐式原型**</span><br><span class="line"></span><br><span class="line">prototpe存在的意义就是给对象（函数对象）的\__proto__引用</span><br></pre></td></tr></table></figure>
-<p>   var o1 = {a : 1,<br>              b : 2,<br>              c : 3,<br>    };<br>   console.log(o1.<strong>proto</strong> === Object.prototype)<br><code>`</code><br><img src="http://images.cnitblog.com/blog/138012/201409/181509180812624.png" alt="此处输入图片的描述"><br>即，每个对象（包括函数对象）都有一个__proto__属性，指向创建该对象的函数的prototype。</p>
-<p>那么上图中的“Object.prototype”也是一个对象，它的__proto__指向哪里？</p>
-<p>好问题！</p>
-<p>在说明“Object prototype”之前，先说一下函数的prototype。函数的prototype本质上就是和 var obj = {} 是一样的，都是一个对象，都是被Object创建，所以它的__proto__指向的就是Object.prototype。</p>
-<p>但是Object.prototype确实一个特例——它的__proto__指向的是null，切记切记！</p>
-<p><img src="http://images.cnitblog.com/blog/138012/201409/181510403153733.png" alt="此处输入图片的描述"></p>
-<p>根据上面都知道函数是根据Function创建出来的，那么我们猜测函数（Function对象）的__proto__应该指向Function.prototype<br><img src="http://oquq74tfk.bkt.clouddn.com/17-8-10/50601507.jpg" alt=""></p>
-<h4 id="3-如何解释上面那个奇怪问题"><a href="#3-如何解释上面那个奇怪问题" class="headerlink" title="3.如何解释上面那个奇怪问题"></a>3.如何解释上面那个奇怪问题</h4><p><img src="http://images.cnitblog.com/blog/138012/201409/181512068463597.png" alt="此处输入图片的描述"><br>上图中，很明显的标出了：自定义函数Foo.<strong>proto</strong>指向Function.prototype，Object.<strong>proto</strong>指向Function.prototype，唉，怎么还有一个……Function.<strong>proto</strong>指向Function.prototype？这不成了循环引用了？<br>（<strong>proto</strong>指向创建自己的函数原型）<br>对！是一个环形结构。</p>
-<p>其实稍微想一下就明白了。Function也是一个函数，函数是一种对象，也有<strong>proto</strong>属性。既然是函数，那么它一定是被Function创建。所以——Function是被自身创建的。所以它的<strong>proto</strong>指向了自身的Prototype。所以回答上面那个问题-Function是被自身创建的。</p>
-<h2 id="三、老朋友instanceof的查询机制"><a href="#三、老朋友instanceof的查询机制" class="headerlink" title="三、老朋友instanceof的查询机制"></a>三、老朋友instanceof的查询机制</h2><p>对于值类型，你可以通过typeof判断，string/number/boolean都很清楚，但是typeof在判断到引用类型的时候，返回值只有object/function，你不知道它到底是一个object对象，还是数组，还是new Number等等。这个时候就需要用到instanceof。例如：</p>
-<p><img src="http://images.cnitblog.com/blog/138012/201409/181635128935132.png" alt="此处输入图片的描述"></p>
-<h4 id="这是我们需要知道instanceof的判断规则"><a href="#这是我们需要知道instanceof的判断规则" class="headerlink" title="这是我们需要知道instanceof的判断规则"></a>这是我们需要知道instanceof的判断规则</h4><p><img src="http://images.cnitblog.com/blog/138012/201409/181635468939277.png" alt="此处输入图片的描述"><br>Instanceof运算符的第一个变量是一个对象，暂时称为A；第二个变量一般是一个函数，暂时称为B。</p>
-<p>Instanceof的判断队则是：沿着A的<strong>proto</strong>这条线来找，同时沿着B的prototype这条线来找，如果两条线能找到同一个引用，即同一个对象，那么就返回true。如果找到终点还未重合，则返回false。</p>
-<p>按照以上规则，大家看看“ f1 instanceof Object ”这句代码是不是true？ 根据上图很容易就能看出来，就是true。</p>
-<p>通过上以规则，你可以解释很多比较怪异的现象，例如：</p>
-<p><img src="http://images.cnitblog.com/blog/138012/201409/181636252689920.png" alt="此处输入图片的描述"></p>
-<p>这些看似很怪异的现象，其实都是根据上面的查找方法；比如现在咋们就分析这张图片<br><img src="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg" alt="此处输入图片的描述"></p>
-<p>prototype是原型，是对象的__proto__属性将创建自身函数的prototype连接（引用），层层连接形成一条最后指向Object.prototype.__proto__===null的链，称之为<strong>原型链</strong>。</p>
-<p>instanceof这样设计，就是根据原型链，或者说是继承吧</p>
-<p>这样现在就很好理解一切都是对象这个说法了，所谓的原型链就是上面”__proto__”这条链状结构了</p>
 <ul>
-<li>Object 是一个 JS 基础类型，其他所有类型都从 Object 继承了基本的行为。</li>
+<li>解析出主机名</li>
+<li>DNS查询</li>
+<li>TCP连接</li>
+<li>HTTP请求</li>
+<li>服务器进行响应</li>
+<li>客户端进行渲染</li>
 </ul>
-
+<h1 id="客户端进行渲染"><a href="#客户端进行渲染" class="headerlink" title="客户端进行渲染"></a>客户端进行渲染</h1><blockquote>
+<p>这次就了解下客户端如何进行渲染</p>
+</blockquote>
+<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><p><img src="http://oquq74tfk.bkt.clouddn.com/18-9-1/14451291.jpg" alt=""></p>
+<h3 id="白话分析"><a href="#白话分析" class="headerlink" title="白话分析"></a>白话分析</h3><blockquote>
+<p>当浏览器拿到html时候，开始解析html，构建DOM，从上往下，在这个过程中遇见css，如果是内联就开启另一个线程来构建CSSOM（紫色的css），如果是外链的话就会就会开启另一线程进行下载，下载完成后进行构建CSSOM，如果在这个过程中遇见script并且async和defer都为false，这时候就会停止解析html，同时，如果目前还有未下载完成的CSS资源或者现有的css还没有构建完CSSOM，js就会进行等待，直到下载完目前的CSS资源，构建完当前的CSSOM，当CSSOM构建完成之后，通过目前的DOM tree和CSSOS进行一次计算，也就是construct-&gt;rendering tree的过程,这个过程中，如果是第一次进行构建肯定会触发一次reflow/layout,然后浏览器启动另一个线程进行pain -&gt; Graphics API，如果不是第一次构建，则会判断当前新的计算需不需要触发reflow，更新rendering tree，当构建完成，这时候就可以去执行前面阻塞js，在执行js的过程中，js将通过DOM API和CSSOM API进行更改DOM 和CSSOM，按照正常流程就是更改一次进行contruct一次，然后update rendering tree，但是浏览器做了优化，具体的优化在reflow和repaint的介绍中，到js执行完毕，就会继续parse html 构建DOM，重复执行上述过程，这中间的几点总结如下：</p>
+</blockquote>
+<ul>
+<li>CSS 不会阻塞 DOM 的解析，但会阻塞 DOM 渲染。</li>
+<li>JS 阻塞 DOM 解析，但聪明的浏览器会”偷看”DOM，预先下载相关资源。</li>
+<li>浏览器遇到 <script>且没有defer或async属性的标签时，会触发页面渲染（构建出rendering tree），因而如果前面CSS资源尚未加载完毕时，浏览器会等待它加载完毕再执行脚本。所以这时候CSSOM会阻塞javascript的执行，javascript执行会阻塞DOM的构建</li>
+</ul>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
+<li>为什么js放到body最后、css放到head中比较好？</li>
+<li>同时将js 和 css放置在一起的时候，js在前面，性能好点为什么？</li>
+</ul>
+<h1 id="reflow和repaint"><a href="#reflow和repaint" class="headerlink" title="reflow和repaint"></a>reflow和repaint</h1><blockquote>
+<p>上面页面渲染的过程中，js的执行，或者相关逻辑将会通过不同的方式更改DOM或者CSSOM，在这些过程中浏览器将会根据计算来确定需要进行哪些操作，最为典型的就是reflow和repaint，也是我们能够通过此处进行优化页面的两点。首先谈下自己的理解：不论是正在执行的js或者是css伪类激活等等都是更改CSSOM和DOM两者，然后通过DOM或者CSSOM进行构造形成rendering tree进行渲染，页面展示出来，如果是第一次进行构造rendering tree，将会触发layout进行计算元素位置和几何结构，如果已经存在rendering tree将会根据CSSOM或者DOM的变化，判断是不是需要进行reflow过程（计算节点的位置或者几何结构-部分或者全部），当成功构建rendering tree或者更新rendering tree ，如果第一次将会paint，如果不是第一次将会触发repaint过程，然后将页面展示在浏览器上。</p>
+</blockquote>
+<h3 id="reflow"><a href="#reflow" class="headerlink" title="reflow"></a>reflow</h3><blockquote>
+<p>重新计算文档中元素的位置和几何结构的过程（根据实际分为，部分或者全部）</p>
+</blockquote>
+<h4 id="触发的方法如下："><a href="#触发的方法如下：" class="headerlink" title="触发的方法如下："></a>触发的方法如下：</h4><ul>
+<li>元素属性的变化<ul>
+<li>盒模型相关的属性: width，height，margin，display，border，etc</li>
+<li>定位属性及浮动相关的属性: top,position,float，etc</li>
+<li>改变节点内部文字结构也会触发回流: text-align, overflow, font-size, line-height, vertival-align，etc</li>
+</ul>
+</li>
+<li>调整窗口大小</li>
+<li>样式表变动</li>
+<li>元素内容变化，尤其是输入控件</li>
+<li>dom操作</li>
+<li>css伪类激活</li>
+<li>计算元素的offsetWidth、offsetHeight、clientWidth、clientHeight、width、height、scrollTop、scrollHeight</li>
+</ul>
+<h4 id="浏览器中的执行过程"><a href="#浏览器中的执行过程" class="headerlink" title="浏览器中的执行过程"></a>浏览器中的执行过程</h4><ul>
+<li>Recalculate Style：浏览器计算改变过后的样式</li>
+<li>Layout：这个过程就是我们说得reflow回流过程</li>
+<li>Update Layer Tree：更新Layer Tree</li>
+<li>Paint：图层的绘制过程</li>
+<li>Composite Layers：合并多个图层</li>
+</ul>
+<h3 id="repaint"><a href="#repaint" class="headerlink" title="repaint"></a>repaint</h3><blockquote>
+<p>根据rendering tree渲染生成页面</p>
+</blockquote>
+<h4 id="触发的方法如下：-1"><a href="#触发的方法如下：-1" class="headerlink" title="触发的方法如下："></a>触发的方法如下：</h4><ul>
+<li>页面中的元素更新样式风格相关的属性时就会触发重绘，如background，color，cursor，visibility，etc</li>
+</ul>
+<h4 id="浏览器执行过程如下："><a href="#浏览器执行过程如下：" class="headerlink" title="浏览器执行过程如下："></a>浏览器执行过程如下：</h4><ul>
+<li>Recalculate Style：浏览器计算改变过后的样式</li>
+<li>Update Layer Tree：更新Layer Tree</li>
+<li>Paint：图层的绘制过程</li>
+<li>Composite Layers：合并多个图层</li>
+</ul>
+<h3 id="浏览器对于reflow的优化"><a href="#浏览器对于reflow的优化" class="headerlink" title="浏览器对于reflow的优化"></a>浏览器对于reflow的优化</h3><blockquote>
+<p>浏览器为了防止我们犯二把多次reflow操作放在循环中而引发浏览器假死，做了一个聪明的小动作。它会收集reflow操作到缓存队列中直到一定的规模或者过了特定的时间，再一次性地flush队列，反馈到render tree中，这样就将多次的reflow操作减少为少量的reflow。如果我们想要在一次reflow过后就获取元素变动过后的值呢？这个时候浏览器为了获取真实的值就不得不立即flush缓存的队列。这些值包括：</p>
+</blockquote>
+<ul>
+<li>offsetTop/Left/Width/Height</li>
+<li>scrollTop/Left/Width/Height</li>
+<li>clientTop/Left/Width/Height</li>
+<li>getComputedStyle(), or currentStyle in IE</li>
+</ul>
+<p>例如可通过下面两种方式进行测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 浏览器做优化，将多次reflow减少为少量的reflow</span><br><span class="line">document.addEventListener(&apos;DOMContentLoaded&apos;, function () &#123;</span><br><span class="line">    var date = new Date();</span><br><span class="line">    for (var i = 0; i &lt; 70000; i++) &#123;</span><br><span class="line">        var tmpNode = document.createElement(&quot;div&quot;);</span><br><span class="line">        tmpNode.innerHTML = &quot;test&quot; + i;</span><br><span class="line">        document.body.appendChild(tmpNode);</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(new Date() - date);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 因为js的操作，浏览器需要每次进行reflow，页面性能差，造成假死</span><br><span class="line">document.addEventListener(&apos;DOMContentLoaded&apos;, function () &#123;</span><br><span class="line">        var date = new Date();</span><br><span class="line">        for (var i = 0; i &lt; 70000; i++) &#123;</span><br><span class="line">            var tmpNode = document.createElement(&quot;div&quot;);</span><br><span class="line">            tmpNode.innerHTML = &quot;test&quot; + i;</span><br><span class="line">            document.body.offsetHeight; // 获取body的真实值</span><br><span class="line">            document.body.appendChild(tmpNode);</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(&quot;speed time&quot;, new Date() - date);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="避免reflow和repaint带来的性能开销"><a href="#避免reflow和repaint带来的性能开销" class="headerlink" title="避免reflow和repaint带来的性能开销"></a>避免reflow和repaint带来的性能开销</h3><ul>
+<li>避免使用触发reflow、repaint的css属性</li>
+<li>将reflow、repaint的影响范围限制在单独的图层之内</li>
+</ul>
+<h1 id="defer和async"><a href="#defer和async" class="headerlink" title="defer和async"></a>defer和async</h1><blockquote>
+<p>首先需要注意，这两个属性都是对具有src属性的script标签有效，对于内联script无效</p>
+</blockquote>
+<ul>
+<li>defer </li>
+</ul>
+<p>defer表示延迟执行引入的javascript，即就是dom解析到defer属性的script脚本，不会停止解析，等到整个dom解析完毕后，按照defer-script顺序执行，执行完毕后触发DOMContentLoaded事件。</p>
+<ul>
+<li>async </li>
+</ul>
+<p>async表示异步执行引入的script，与 defer 的区别在于，如果已经加载好，就会开始执行——无论此刻是 HTML 解析阶段还是 DOMContentLoaded 触发之后。需要注意的是，这种方式加载的 JavaScript 依然会阻塞 load 事件。换句话说，async-script 可能在 DOMContentLoaded 触发之前或之后执行，但一定在 load 触发之前执行。</p>
+<ul>
+<li>document.createElement</li>
+</ul>
+<p>这也就是自己这次遇见的问题，最终发现通过这种方式创建的script默认是异步的，所以来讲，动态创建的script是不会阻塞页面的，如果想要同步进行执行可以将async设置为false,如果使用这种方法创建link标签的话，实际测试chrome是不会阻塞渲染的。<br><img src="http://oquq74tfk.bkt.clouddn.com/18-9-1/414026.jpg" alt=""></p>
+<ul>
+<li>上面两种js执行图解</li>
+</ul>
+<p><img src="http://oquq74tfk.bkt.clouddn.com/18-9-2/56168940.jpg" alt=""></p>
+<h1 id="页面渲染触发的事件"><a href="#页面渲染触发的事件" class="headerlink" title="页面渲染触发的事件"></a>页面渲染触发的事件</h1><blockquote>
+<p>页面在渲染过程会触发很多事件，例如window.onload 等等，还有打开chrome network下面展示的DOMContentLoaded时间和load时间等等，这些到底在页面渲染的哪个时间点执行？下面就是结合浏览器和页面渲染图解来详细探讨一番</p>
+</blockquote>
+<h3 id="DOM-API的事件"><a href="#DOM-API的事件" class="headerlink" title="DOM API的事件"></a>DOM API的事件</h3><ul>
+<li><p>DOMContentLoaded</p>
+<blockquote>
+<p>加载完页面，解析完所有标签（不包括执行CSS和JS），执行每个同步的script标签中的JS，执行完毕后然后触发。补全表单也是在这个时间点后进行补全</p>
+</blockquote>
+</li>
+<li><p>load</p>
+<blockquote>
+<p>window.onload: 所有文件包括样式表，图片和其他资源下载完成后触发</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>readystatechange</p>
+<blockquote>
+<p>通过document.readyState 可以读取当前页面加载状态，会有三个值：①loading：加载 -  dom正在加载②interactive互动-文档已被解析，但是诸如图像，样式表和框架之类的子资源仍然在加载③comlete 文档所有资源完成加载，状态表示load即将被触发</p>
+</blockquote>
+</li>
+<li><p>beforeunload</p>
+<blockquote>
+<p>用户即将离开或者关闭窗口时候</p>
+</blockquote>
+</li>
+<li><p>unload</p>
+<blockquote>
+<p>用户离开页面的时候</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="页面加载中的时间点"><a href="#页面加载中的时间点" class="headerlink" title="页面加载中的时间点"></a>页面加载中的时间点</h3><ul>
+<li>domLoading：这是整个过程的起始时间戳，浏览器即将开始解析第一批收到的 HTML 文档字节。</li>
+<li>domInteractive：表示浏览器完成对所有 HTML 的解析并且 DOM 构建完成的时间点。</li>
+<li>domContentLoaded：表示 DOM 准备就绪并且没有样式表阻止 JavaScript 执行的时间点，这意味着现在我们可以构建渲染树了。</li>
+<li>许多 JavaScript 框架都会等待此事件发生后，才开始执行它们自己的逻辑。因此，浏览器会捕获 EventStart 和 EventEnd 时间戳，让我们能够追踪执行所花费的时间。</li>
+<li>domComplete：顾名思义，所有处理完成，并且网页上的所有资源（图像等）都已下载完毕，也就是说，加载转环已停止旋转。</li>
+<li>loadEvent：作为每个网页加载的最后一步，浏览器会触发 onload 事件，以便触发额外的应用逻辑。</li>
+</ul>
+<p>HTML 规范中规定了每个事件的具体条件：应在何时触发、应满足什么条件等等。对我们而言，我们将重点放在与关键渲染路径有关的几个关键里程碑上：</p>
+<ul>
+<li>domInteractive 表示 DOM 准备就绪的时间点。</li>
+<li>domContentLoaded 一般表示 DOM 和 CSSOM 均准备就绪的时间点。如果没有阻塞解析器的 JavaScript，则 DOMContentLoaded 将在 domInteractive 后立即触发。</li>
+<li>domComplete 表示网页及其所有子资源都准备就绪的时间点。</li>
+</ul>
+<h1 id="js引擎执行js的过程"><a href="#js引擎执行js的过程" class="headerlink" title="js引擎执行js的过程"></a>js引擎执行js的过程</h1><blockquote>
+<p>js引擎是如何执行我们脚本中的js，这些过程清楚吗？前端一段时间拜读最新的忍者秘籍，当时就感觉这块不是很清楚</p>
+</blockquote>
+<p>直接看这个博文，讲的很棒<a href="https://juejin.im/post/5b879a9f6fb9a01a0f24a5e1">https://juejin.im/post/5b879a9f6fb9a01a0f24a5e1</a>, 后面在详细纠结一下这一块</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://juejin.im/post/5b879a9f6fb9a01a0f24a5e1">图解js执行 - 很棒</a></li>
+<li><a href="https://juejin.im/post/5b879e16f265da436d7e543c">页面渲染 - 性能优化</a></li>
+<li><a href="https://github.com/ljf0113/how-js-and-css-block-dom">css-、js阻塞DOM渲染</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/25279069">浏览器 渲染,绘制流程及性能优化</a></li>
+<li><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">浏览器工作原理解析</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/29418126">页面渲染-原理</a></li>
+<li><a href="https://juejin.im/post/5a9372895188257a6b06132e">reflow和replaint引发的性能问题</a></li>
+<li><a href="https://blog.csdn.net/luoshengyang/article/details/50661553">Chromium网页Graphics Layer Tree创建过程分析</a></li>
+<li><a href="https://github.com/fi3ework/Blog/issues/3">页面生命周期</a></li>
+<li><a href="https://developers.google.com/">chrome 工具说明</a></li>
+<li><a href="https://stackoverflow.com/questions/588040/window-onload-vs-document-onload">window.onload vs document.onload</a></li>
+</ul>
+</script></li></ul>
       
     </div>
 
@@ -544,12 +627,6 @@ console.log(fn.prototype);//undefined
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-          
-        </div>
-      
 
       
       
@@ -559,8 +636,8 @@ console.log(fn.prototype);//undefined
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/27/设计思路/" rel="next" title="3D云标签/3D旋转链接设计思路（简单实现）">
-                <i class="fa fa-chevron-left"></i> 3D云标签/3D旋转链接设计思路（简单实现）
+              <a href="/2018/08/28/性能优化之缓存/" rel="next" title="web性能优化之缓存">
+                <i class="fa fa-chevron-left"></i> web性能优化之缓存
               </a>
             
           </div>
@@ -568,10 +645,6 @@ console.log(fn.prototype);//undefined
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/27/正则表达式/" rel="prev" title="正则表达式">
-                正则表达式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -761,7 +834,7 @@ console.log(fn.prototype);//undefined
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、一切都是对象？"><span class="nav-number">1.</span> <span class="nav-text">一、一切都是对象？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-什么是对象（通俗）"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.什么是对象（通俗）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-怎样创建对象"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 怎样创建对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-函数是通过什么创建的"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.函数是通过什么创建的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-验证上面说法"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.验证上面说法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-如何解释上面那个奇怪问题"><span class="nav-number">1.0.5.</span> <span class="nav-text">3.如何解释上面那个奇怪问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、老朋友instanceof的查询机制"><span class="nav-number">2.</span> <span class="nav-text">三、老朋友instanceof的查询机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#这是我们需要知道instanceof的判断规则"><span class="nav-number">2.0.1.</span> <span class="nav-text">这是我们需要知道instanceof的判断规则</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#输入一个url到页面加载经过哪些步骤"><span class="nav-number">1.</span> <span class="nav-text">输入一个url到页面加载经过哪些步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端进行渲染"><span class="nav-number">2.</span> <span class="nav-text">客户端进行渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#流程图"><span class="nav-number">2.0.1.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#白话分析"><span class="nav-number">2.0.2.</span> <span class="nav-text">白话分析</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
