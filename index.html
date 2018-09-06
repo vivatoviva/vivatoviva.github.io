@@ -11,15 +11,16 @@
 
 
 
-  
+
 
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
+
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
+  <meta name="theme-color" content="#222">
 
 
 
@@ -32,8 +33,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -56,9 +57,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
@@ -80,60 +81,83 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '6.4.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Pisces',
+      version: '6.4.0',
+      sidebar: {
+        "position": "left",
+        "display": "post",
+        "offset": 12,
+        "b2t": false,
+        "scrollpercent": false,
+        "onmobile": false
+      },
+      fancybox: false,
+      fastclick: false,
+      lazyload: false,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+  </script>
 
 
-  
+
 
 
 
 
   <meta name="keywords" content="vivatoviva">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Genluo">
-<meta property="og:url" content="http://blogoog.com/index.html">
-<meta property="og:site_name" content="Genluo">
-<meta property="og:locale" content="zh-CN">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Genluo">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Genluo">
+  <meta property="og:url" content="http://blogoog.com/index.html">
+  <meta property="og:site_name" content="Genluo">
+  <meta property="og:locale" content="zh-CN">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Genluo">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blogoog.com/"/>
+  <link rel="canonical" href="http://blogoog.com/" />
 
 
 
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
+  <script type="text/javascript" id="page.configurations">
+    CONFIG.page = {
+      sidebar: "",
+    };
+  </script>
 
   <title>Genluo</title>
-  
+
 
 
 
@@ -144,2182 +168,2210 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+    <style type="text/css">
+      .use-motion .motion-element,
+      .use-motion .brand,
+      .use-motion .menu-item,
+      .sidebar-inner,
+      .use-motion .post-block,
+      .use-motion .pagination,
+      .use-motion .comments,
+      .use-motion .post-header,
+      .use-motion .post-body,
+      .use-motion .collection-title {
+        opacity: initial;
+      }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+      .use-motion .logo,
+      .use-motion .site-title,
+      .use-motion .site-subtitle {
+        opacity: initial;
+        top: initial;
+      }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
+      .use-motion {
+        .logo-line-before i {
+          left: initial;
+        }
+
+        .logo-line-after i {
+          right: initial;
+        }
+      }
+    </style>
+  </noscript>
 
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
-  
-  
-    
-  
+
+
+
+
 
   <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Genluo</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-    
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
 
 
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
+                <span class="logo-line-before"><i></i></span>
+                <span class="site-title">Genluo</span>
+                <span class="logo-line-after"><i></i></span>
+              </a>
+            </div>
 
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home menu-item-active">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
-  </li>
+          </div>
 
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
+          <div class="site-nav-toggle">
+            <button aria-label="切换导航栏">
+              <span class="btn-bar"></span>
+              <span class="btn-bar"></span>
+              <span class="btn-bar"></span>
+            </button>
+          </div>
+        </div>
 
 
 
-    </div>
-  
-</nav>
+        <nav class="site-nav">
+
+          <ul id="menu" class="menu">
 
 
 
-  
+
+
+            <li class="menu-item menu-item-home menu-item-active">
+              <a href="/" rel="section">
+                <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+            </li>
 
 
 
-</div>
+
+            <li class="menu-item menu-item-tags">
+              <a href="/tags/" rel="section">
+                <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+            </li>
+
+
+
+
+            <li class="menu-item menu-item-categories">
+              <a href="/categories/" rel="section">
+                <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+            </li>
+
+
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+
+
+                <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+            </li>
+
+          </ul>
+
+
+
+
+
+          <div class="site-search">
+
+            <div class="popup search-popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+                  <i class="fa fa-search"></i>
+                </span>
+                <span class="popup-btn-close">
+                  <i class="fa fa-times-circle"></i>
+                </span>
+                <div class="local-search-input-wrapper">
+                  <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+
+
+          </div>
+
+        </nav>
+
+
+
+
+
+
+
+      </div>
     </header>
 
-    
+
 
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
-            
 
-          
+
+
+
           <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/09/01/web页面渲染/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Genluo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Genluo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/01/web页面渲染/" itemprop="url">
-                  web页面进行渲染
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-09-01 18:00:00" itemprop="dateCreated datePublished" datetime="2018-09-01T18:00:00+08:00">2018-09-01</time>
-            
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-09-02 19:52:34" itemprop="dateModified" datetime="2018-09-02T19:52:34+08:00">2018-09-02</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/web-前端-优化/" itemprop="url" rel="index"><span itemprop="name">web 前端 优化</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/09/01/web页面渲染/" class="leancloud_visitors" data-flag-title="web页面进行渲染">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这段时间在学习缓存优化，在进行LS缓存优化的时候，动态插入script标签的时候，代码执行顺序前后会出错，但是代码插入到html中的顺序是正确的，思考了很久，最后发现这是 script的async的影响，但是通过这个过程发现自己对于页面渲染和代码执行顺序还是很模糊啊，一直想研究webkit，这次就做一个先驱吧，先行了解一波web页面是如何渲染出来</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/01/web页面渲染/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/28/性能优化之缓存/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Genluo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Genluo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/28/性能优化之缓存/" itemprop="url">
-                  web性能优化之缓存
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-28 08:43:00" itemprop="dateCreated datePublished" datetime="2018-08-28T08:43:00+08:00">2018-08-28</time>
-            
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-08-27 01:13:47" itemprop="dateModified" datetime="2018-08-27T01:13:47+08:00">2018-08-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/web-前端/" itemprop="url" rel="index"><span itemprop="name">web 前端</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/28/性能优化之缓存/" class="leancloud_visitors" data-flag-title="web性能优化之缓存">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="缓存的分类"><a href="#缓存的分类" class="headerlink" title="缓存的分类"></a>缓存的分类</h1><p>缓存是一个比较大的知识点，同时也是一个极大提高性能的点，缓存有很多种，常见的有浏览器缓存、服务器缓存、代理服务器缓存、CDN缓存、</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/28/性能优化之缓存/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/前端存储md/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Genluo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Genluo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/27/前端存储md/" itemprop="url">
-                  前端的存储三种方式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-27 01:43:00 / 修改时间：01:24:35" itemprop="dateCreated datePublished" datetime="2018-08-27T01:43:00+08:00">2018-08-27</time>
-            
-            
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/27/前端存储md/" class="leancloud_visitors" data-flag-title="前端的存储三种方式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近做项目遇见权限控制，主要使用了缓存来记录用户权限，后面有时间整理下了前端的几种存储方式，主要有 cookie、storage</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/27/前端存储md/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/toc- 记录生活（一）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Genluo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Genluo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/27/toc- 记录生活（一）/" itemprop="url">
-                  生活随笔
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
-            
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-06-05 17:22:41" itemprop="dateModified" datetime="2017-06-05T17:22:41+08:00">2017-06-05</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/记录生活/" itemprop="url" rel="index"><span itemprop="name">记录生活</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-             <span id="/2018/08/27/toc- 记录生活（一）/" class="leancloud_visitors" data-flag-title="生活随笔">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>做这个博客为的就是在我大学生活期间做一个记录，不论是生活还是敲代码，这个博客在第一篇文章发送一周以前开始搭建，使用时<strong>HEXO</strong>和<strong>GITHUB</strong>，让我加粗装个B，当时因为总是出错而且不知道是哪里的问题，就一直拖着，但是心里一直想搭建这个博客，或者说想装这个B吧，哈哈，所以在周五的时候又开始从头再来，这次幸好没出事，成功搭建，目前功能的话只有一个查询，其他的统计、评论有时间或者有必要的时候再看看把这些功能都加上。<br>其实在搭建成功的时候，就想将自己遇见的问题整理下，作为自己的入坑历史，（恩恩，语气是这样，我在对自己说，哈哈，别介意）但是中间有考试，要补各种实验，等等，一直没有时间做这件事情。但是现在的我做完了，一身轻松，感觉好爽，这段时间，可能也就今天吧我比较轻松，能够有点时间写一篇日记，记录一下自己这几天干的什么，计划下一周要做的一些事情和一些感悟吧<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/27/toc- 记录生活（一）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/Observer模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Genluo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Genluo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/27/Observer模式/" itemprop="url">
-                  js设计模式-观察者模式（Observer和Pub/Sub）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
-            
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-03-28 22:22:50" itemprop="dateModified" datetime="2018-03-28T22:22:50+08:00">2018-03-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/27/Observer模式/" class="leancloud_visitors" data-flag-title="js设计模式-观察者模式（Observer和Pub/Sub）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Observer模式"><a href="#Observer模式" class="headerlink" title="Observer模式"></a>Observer模式</h2><h3 id="个人见解"><a href="#个人见解" class="headerlink" title="个人见解"></a>个人见解</h3><p>主要分为观察者和目标者，这个模式就是通过一种方式给一个目标者绑定观察者，然后可以通过一种方式，在需要的时候，将一些参数一次传递给目标者的所有观察者（模拟通知）。</p>
-<h3 id="一般的主要构成"><a href="#一般的主要构成" class="headerlink" title="一般的主要构成"></a>一般的主要构成</h3><p><strong>Subject（目标）</strong><br>作为观察者和具体怒表之间的中间存在，主要是方便添加或者删除观察者<br><strong>Observer（观察者）</strong><br>为那些在目标状态发生改变时需获得通知的对象提供一个更新接口<br><strong>ConcreteSubject（具体目标</strong><br>状态发生改变时，向Observer发出通知，储存ConcreteObserver的状态。<br><strong>ConcreteObserver（具体观察者）</strong><br>储存一个指向ConcreteSubject的引用，实现Observer的更新接口，以使自身状态与目标的状态保持一致。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/27/Observer模式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/md插入图片/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Genluo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Genluo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/27/md插入图片/" itemprop="url">
-                  博文的图片问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
-            
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-06-05 18:12:55" itemprop="dateModified" datetime="2017-06-05T18:12:55+08:00">2017-06-05</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/博客配置/" itemprop="url" rel="index"><span itemprop="name">博客配置</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/27/md插入图片/" class="leancloud_visitors" data-flag-title="博文的图片问题">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>现在编辑博客很不爽的就是编辑的博文不能够插入图片，因为最终将博文上传到博客时，在本地插入的图片不会跟着博文一起上传到图片，所以为了解决这个问题，我从今天晚上开始找方法试着便捷插入图片并且将之显示在我的博文上。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://oquq74tfk.bkt.clouddn.com/17-6-5/51457796.jpg" alt="美美的照片"></h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/27/md插入图片/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/正则表达式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Genluo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Genluo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/27/正则表达式/" itemprop="url">
-                  正则表达式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
-            
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-07-04 22:37:26" itemprop="dateModified" datetime="2017-07-04T22:37:26+08:00">2017-07-04</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/27/正则表达式/" class="leancloud_visitors" data-flag-title="正则表达式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<p>   最近做一个表单验证，以前表单验证所用到的正则表达式都是百度上面找的，这几天有点时间就将学习下，因为内容很多，我感觉我记不住，就将看到的博文整理下，作为自己以后使用正则表达式的参考。</p>
-<blockquote>
-<p>参考博文：<a href="http://www.cnblogs.com/hustskyking/archive/2013/06/04/RegExp.html#testing" target="_blank" rel="noopener">30分钟入门教程</a> | <a href="http://www.cnblogs.com/hustskyking/p/how-regular-expressions-work.html" target="_blank" rel="noopener">深入了解正则表达式</a> | <a href="http://www.cnblogs.com/rubylouvre/archive/2010/03/09/1681222.html" target="_blank" rel="noopener">js中的正则表达式</a><br> 正则表达式验证网站：<a href="http://www.regexpal.com/" target="_blank" rel="noopener">验证表达式</a><br>因为我是编写javascript要使用正则表达式，所以从js方面来整理一些语法和注意事项</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/27/正则表达式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/一、一切都是对象？/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Genluo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Genluo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/27/一、一切都是对象？/" itemprop="url">
-                  原型、原型链
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
-            
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-12 14:19:26" itemprop="dateModified" datetime="2017-08-12T14:19:26+08:00">2017-08-12</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/27/一、一切都是对象？/" class="leancloud_visitors" data-flag-title="原型、原型链">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<p><img src="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg" alt="此处输入图片的描述"></p>
-<blockquote>
-<p>引用自<a href="http://www.cnblogs.com/wangfupeng1988/p/3977924.html" target="_blank" rel="noopener">王福朋老师</a>的经典博文，加上自己的理解完成的一篇博文</p>
-</blockquote>
-<h2 id="一、一切都是对象？"><a href="#一、一切都是对象？" class="headerlink" title="一、一切都是对象？"></a>一、一切都是对象？</h2><p>“一切都是对象”这句话的重点在于如何去理解“对象”这个概念。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/27/一、一切都是对象？/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/设计思路/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Genluo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Genluo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/27/设计思路/" itemprop="url">
-                  3D云标签/3D旋转链接设计思路（简单实现）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
-            
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-09 00:12:00" itemprop="dateModified" datetime="2017-08-09T00:12:00+08:00">2017-08-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/27/设计思路/" class="leancloud_visitors" data-flag-title="3D云标签/3D旋转链接设计思路（简单实现）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://oquq74tfk.bkt.clouddn.com/17-8-8/94642384.jpg" alt=""><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/27/设计思路/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Genluo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Genluo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/" itemprop="url">
-                  浏览器同源策略及规避Ajax中jsonp跨域解决方案
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-08-27 01:08:29 / 修改时间：01:25:45" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
-            
-            
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/" class="leancloud_visitors" data-flag-title="浏览器同源策略及规避Ajax中jsonp跨域解决方案">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>了解下浏览器的同源策略，并且理解下jsonp的跨域解决方案</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg"
-                alt="Genluo" />
-            
-              <p class="site-author-name" itemprop="name">Genluo</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives">
-                
-                    <span class="site-state-item-count">25</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
+
+            <section id="posts" class="posts-expand">
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/09/01/web页面渲染/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="Genluo">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="Genluo">
+                  </span>
+
+
+                  <header class="post-header">
+
+
+
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2018/09/01/web页面渲染/" itemprop="url">
+                        web页面进行渲染
+                      </a>
+
+
+                    </h1>
+
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+
+
+
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+
+                        <time title="创建时间：2018-09-01 18:00:00" itemprop="dateCreated datePublished" datetime="2018-09-01T18:00:00+08:00">2018-09-01</time>
+
+
+
+
+
+
+
+                        <span class="post-meta-divider">|</span>
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-check-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">更新于</span>
+
+                        <time title="修改时间：2018-09-02 19:52:34" itemprop="dateModified" datetime="2018-09-02T19:52:34+08:00">2018-09-02</time>
+
+
+                      </span>
+
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">分类于</span>
+
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/web-前端-优化/"
+                            itemprop="url" rel="index"><span itemprop="name">web 前端 优化</span></a></span>
+
+
+
+
+                      </span>
+
+
+
+
+
+
+
+
+                      <span id="/2018/09/01/web页面渲染/" class="leancloud_visitors" data-flag-title="web页面进行渲染">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">阅读次数：</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+
+
+
+
+
+
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <p>这段时间在学习缓存优化，在进行LS缓存优化的时候，动态插入script标签的时候，代码执行顺序前后会出错，但是代码插入到html中的顺序是正确的，思考了很久，最后发现这是
+                      script的async的影响，但是通过这个过程发现自己对于页面渲染和代码执行顺序还是很模糊啊，一直想研究webkit，这次就做一个先驱吧，先行了解一波web页面是如何渲染出来</p>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2018/09/01/web页面渲染/#more" rel="contents">
+                        阅读全文 &raquo;
+                      </a>
+                    </div>
+                    <!--/noindex-->
+
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
                 </div>
-              
 
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
+
+
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/28/性能优化之缓存/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="Genluo">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="Genluo">
+                  </span>
+
+
+                  <header class="post-header">
+
+
+
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2018/08/28/性能优化之缓存/" itemprop="url">
+                        web性能优化之缓存
+                      </a>
+
+
+                    </h1>
+
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+
+
+
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+
+                        <time title="创建时间：2018-08-28 08:43:00" itemprop="dateCreated datePublished" datetime="2018-08-28T08:43:00+08:00">2018-08-28</time>
+
+
+
+
+
+
+
+                        <span class="post-meta-divider">|</span>
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-check-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">更新于</span>
+
+                        <time title="修改时间：2018-08-27 01:13:47" itemprop="dateModified" datetime="2018-08-27T01:13:47+08:00">2018-08-27</time>
+
+
+                      </span>
+
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">分类于</span>
+
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/web-前端/"
+                            itemprop="url" rel="index"><span itemprop="name">web 前端</span></a></span>
+
+
+
+
+                      </span>
+
+
+
+
+
+
+
+
+                      <span id="/2018/08/28/性能优化之缓存/" class="leancloud_visitors" data-flag-title="web性能优化之缓存">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">阅读次数：</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+
+
+
+
+
+
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <h1 id="缓存的分类"><a href="#缓存的分类" class="headerlink" title="缓存的分类"></a>缓存的分类</h1>
+                    <p>缓存是一个比较大的知识点，同时也是一个极大提高性能的点，缓存有很多种，常见的有浏览器缓存、服务器缓存、代理服务器缓存、CDN缓存、</p>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2018/08/28/性能优化之缓存/#more" rel="contents">
+                        阅读全文 &raquo;
+                      </a>
+                    </div>
+                    <!--/noindex-->
+
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
+                </div>
+
+
+
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/前端存储md/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="Genluo">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="Genluo">
+                  </span>
+
+
+                  <header class="post-header">
+
+
+
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2018/08/27/前端存储md/" itemprop="url">
+                        前端的存储三种方式
+                      </a>
+
+
+                    </h1>
+
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+
+
+
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+
+                        <time title="创建时间：2018-08-27 01:43:00 / 修改时间：01:24:35" itemprop="dateCreated datePublished"
+                          datetime="2018-08-27T01:43:00+08:00">2018-08-27</time>
+
+
+
+
+
+
+
+                      </span>
+
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">分类于</span>
+
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/"
+                            itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+
+
+
+                      </span>
+
+
+
+
+
+
+
+
+                      <span id="/2018/08/27/前端存储md/" class="leancloud_visitors" data-flag-title="前端的存储三种方式">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">阅读次数：</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+
+
+
+
+
+
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <p>最近做项目遇见权限控制，主要使用了缓存来记录用户权限，后面有时间整理下了前端的几种存储方式，主要有 cookie、storage</p>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2018/08/27/前端存储md/#more" rel="contents">
+                        阅读全文 &raquo;
+                      </a>
+                    </div>
+                    <!--/noindex-->
+
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
+                </div>
+
+
+
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/toc- 记录生活（一）/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="Genluo">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="Genluo">
+                  </span>
+
+
+                  <header class="post-header">
+
+
+
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2018/08/27/toc- 记录生活（一）/" itemprop="url">
+                        生活随笔
+                      </a>
+
+
+                    </h1>
+
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+
+
+
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+
+                        <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
+
+
+
+
+
+
+
+                        <span class="post-meta-divider">|</span>
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-check-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">更新于</span>
+
+                        <time title="修改时间：2017-06-05 17:22:41" itemprop="dateModified" datetime="2017-06-05T17:22:41+08:00">2017-06-05</time>
+
+
+                      </span>
+
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">分类于</span>
+
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/记录生活/"
+                            itemprop="url" rel="index"><span itemprop="name">记录生活</span></a></span>
+
+
+
+
+                      </span>
+
+
+
+
+
+
+                      <span id="/2018/08/27/toc- 记录生活（一）/" class="leancloud_visitors" data-flag-title="生活随笔">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">阅读次数：</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+
+
+
+
+
+
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <p>做这个博客为的就是在我大学生活期间做一个记录，不论是生活还是敲代码，这个博客在第一篇文章发送一周以前开始搭建，使用时<strong>HEXO</strong>和<strong>GITHUB</strong>，让我加粗装个B，当时因为总是出错而且不知道是哪里的问题，就一直拖着，但是心里一直想搭建这个博客，或者说想装这个B吧，哈哈，所以在周五的时候又开始从头再来，这次幸好没出事，成功搭建，目前功能的话只有一个查询，其他的统计、评论有时间或者有必要的时候再看看把这些功能都加上。<br>其实在搭建成功的时候，就想将自己遇见的问题整理下，作为自己的入坑历史，（恩恩，语气是这样，我在对自己说，哈哈，别介意）但是中间有考试，要补各种实验，等等，一直没有时间做这件事情。但是现在的我做完了，一身轻松，感觉好爽，这段时间，可能也就今天吧我比较轻松，能够有点时间写一篇日记，记录一下自己这几天干的什么，计划下一周要做的一些事情和一些感悟吧<br>
+                      <!--noindex-->
+                      <div class="post-button text-center">
+                        <a class="btn" href="/2018/08/27/toc- 记录生活（一）/#more" rel="contents">
+                          阅读全文 &raquo;
+                        </a>
+                      </div>
+                      <!--/noindex-->
+
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
+                </div>
+
+
+
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/Observer模式/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="Genluo">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="Genluo">
+                  </span>
+
+
+                  <header class="post-header">
+
+
+
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2018/08/27/Observer模式/" itemprop="url">
+                        js设计模式-观察者模式（Observer和Pub/Sub）
+                      </a>
+
+
+                    </h1>
+
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+
+
+
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+
+                        <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
+
+
+
+
+
+
+
+                        <span class="post-meta-divider">|</span>
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-check-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">更新于</span>
+
+                        <time title="修改时间：2018-03-28 22:22:50" itemprop="dateModified" datetime="2018-03-28T22:22:50+08:00">2018-03-28</time>
+
+
+                      </span>
+
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">分类于</span>
+
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/"
+                            itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+
+
+
+                      </span>
+
+
+
+
+
+
+
+
+                      <span id="/2018/08/27/Observer模式/" class="leancloud_visitors" data-flag-title="js设计模式-观察者模式（Observer和Pub/Sub）">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">阅读次数：</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+
+
+
+
+
+
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <h2 id="Observer模式"><a href="#Observer模式" class="headerlink" title="Observer模式"></a>Observer模式</h2>
+                    <h3 id="个人见解"><a href="#个人见解" class="headerlink" title="个人见解"></a>个人见解</h3>
+                    <p>主要分为观察者和目标者，这个模式就是通过一种方式给一个目标者绑定观察者，然后可以通过一种方式，在需要的时候，将一些参数一次传递给目标者的所有观察者（模拟通知）。</p>
+                    <h3 id="一般的主要构成"><a href="#一般的主要构成" class="headerlink" title="一般的主要构成"></a>一般的主要构成</h3>
+                    <p><strong>Subject（目标）</strong><br>作为观察者和具体怒表之间的中间存在，主要是方便添加或者删除观察者<br><strong>Observer（观察者）</strong><br>为那些在目标状态发生改变时需获得通知的对象提供一个更新接口<br><strong>ConcreteSubject（具体目标</strong><br>状态发生改变时，向Observer发出通知，储存ConcreteObserver的状态。<br><strong>ConcreteObserver（具体观察者）</strong><br>储存一个指向ConcreteSubject的引用，实现Observer的更新接口，以使自身状态与目标的状态保持一致。<br>
+                      <!--noindex-->
+                      <div class="post-button text-center">
+                        <a class="btn" href="/2018/08/27/Observer模式/#more" rel="contents">
+                          阅读全文 &raquo;
+                        </a>
+                      </div>
+                      <!--/noindex-->
+
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
+                </div>
+
+
+
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/md插入图片/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="Genluo">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="Genluo">
+                  </span>
+
+
+                  <header class="post-header">
+
+
+
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2018/08/27/md插入图片/" itemprop="url">
+                        博文的图片问题
+                      </a>
+
+
+                    </h1>
+
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+
+
+
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+
+                        <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
+
+
+
+
+
+
+
+                        <span class="post-meta-divider">|</span>
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-check-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">更新于</span>
+
+                        <time title="修改时间：2017-06-05 18:12:55" itemprop="dateModified" datetime="2017-06-05T18:12:55+08:00">2017-06-05</time>
+
+
+                      </span>
+
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">分类于</span>
+
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/博客配置/"
+                            itemprop="url" rel="index"><span itemprop="name">博客配置</span></a></span>
+
+
+
+
+                      </span>
+
+
+
+
+
+
+
+
+                      <span id="/2018/08/27/md插入图片/" class="leancloud_visitors" data-flag-title="博文的图片问题">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">阅读次数：</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+
+
+
+
+
+
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <p>现在编辑博客很不爽的就是编辑的博文不能够插入图片，因为最终将博文上传到博客时，在本地插入的图片不会跟着博文一起上传到图片，所以为了解决这个问题，我从今天晚上开始找方法试着便捷插入图片并且将之显示在我的博文上。</p>
+                    <h2 id=""><a href="#" class="headerlink" title=""></a><img src="http://oquq74tfk.bkt.clouddn.com/17-6-5/51457796.jpg"
+                        alt="美美的照片"></h2>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2018/08/27/md插入图片/#more" rel="contents">
+                        阅读全文 &raquo;
+                      </a>
+                    </div>
+                    <!--/noindex-->
+
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
+                </div>
+
+
+
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/正则表达式/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="Genluo">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="Genluo">
+                  </span>
+
+
+                  <header class="post-header">
+
+
+
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2018/08/27/正则表达式/" itemprop="url">
+                        正则表达式
+                      </a>
+
+
+                    </h1>
+
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+
+
+
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+
+                        <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
+
+
+
+
+
+
+
+                        <span class="post-meta-divider">|</span>
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-check-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">更新于</span>
+
+                        <time title="修改时间：2017-07-04 22:37:26" itemprop="dateModified" datetime="2017-07-04T22:37:26+08:00">2017-07-04</time>
+
+
+                      </span>
+
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">分类于</span>
+
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/"
+                            itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+
+
+
+                      </span>
+
+
+
+
+
+
+
+
+                      <span id="/2018/08/27/正则表达式/" class="leancloud_visitors" data-flag-title="正则表达式">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">阅读次数：</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+
+
+
+
+
+
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <hr>
+                    <p> 最近做一个表单验证，以前表单验证所用到的正则表达式都是百度上面找的，这几天有点时间就将学习下，因为内容很多，我感觉我记不住，就将看到的博文整理下，作为自己以后使用正则表达式的参考。</p>
+                    <blockquote>
+                      <p>参考博文：<a href="http://www.cnblogs.com/hustskyking/archive/2013/06/04/RegExp.html#testing"
+                          target="_blank" rel="noopener">30分钟入门教程</a> | <a href="http://www.cnblogs.com/hustskyking/p/how-regular-expressions-work.html"
+                          target="_blank" rel="noopener">深入了解正则表达式</a> | <a href="http://www.cnblogs.com/rubylouvre/archive/2010/03/09/1681222.html"
+                          target="_blank" rel="noopener">js中的正则表达式</a><br> 正则表达式验证网站：<a href="http://www.regexpal.com/"
+                          target="_blank" rel="noopener">验证表达式</a><br>因为我是编写javascript要使用正则表达式，所以从js方面来整理一些语法和注意事项</p>
+                    </blockquote>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2018/08/27/正则表达式/#more" rel="contents">
+                        阅读全文 &raquo;
+                      </a>
+                    </div>
+                    <!--/noindex-->
+
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
+                </div>
+
+
+
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/一、一切都是对象？/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="Genluo">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="Genluo">
+                  </span>
+
+
+                  <header class="post-header">
+
+
+
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2018/08/27/一、一切都是对象？/" itemprop="url">
+                        原型、原型链
+                      </a>
+
+
+                    </h1>
+
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+
+
+
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+
+                        <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
+
+
+
+
+
+
+
+                        <span class="post-meta-divider">|</span>
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-check-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">更新于</span>
+
+                        <time title="修改时间：2017-08-12 14:19:26" itemprop="dateModified" datetime="2017-08-12T14:19:26+08:00">2017-08-12</time>
+
+
+                      </span>
+
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">分类于</span>
+
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/"
+                            itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+
+
+
+                      </span>
+
+
+
+
+
+
+
+
+                      <span id="/2018/08/27/一、一切都是对象？/" class="leancloud_visitors" data-flag-title="原型、原型链">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">阅读次数：</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+
+
+
+
+
+
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <hr>
+                    <p><img src="http://oquq74tfk.bkt.clouddn.com/17-8-9/60792455.jpg" alt="此处输入图片的描述"></p>
+                    <blockquote>
+                      <p>引用自<a href="http://www.cnblogs.com/wangfupeng1988/p/3977924.html" target="_blank" rel="noopener">王福朋老师</a>的经典博文，加上自己的理解完成的一篇博文</p>
+                    </blockquote>
+                    <h2 id="一、一切都是对象？"><a href="#一、一切都是对象？" class="headerlink" title="一、一切都是对象？"></a>一、一切都是对象？</h2>
+                    <p>“一切都是对象”这句话的重点在于如何去理解“对象”这个概念。<br>
+                      <!--noindex-->
+                      <div class="post-button text-center">
+                        <a class="btn" href="/2018/08/27/一、一切都是对象？/#more" rel="contents">
+                          阅读全文 &raquo;
+                        </a>
+                      </div>
+                      <!--/noindex-->
+
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
+                </div>
+
+
+
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/设计思路/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="Genluo">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="Genluo">
+                  </span>
+
+
+                  <header class="post-header">
+
+
+
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2018/08/27/设计思路/" itemprop="url">
+                        3D云标签/3D旋转链接设计思路（简单实现）
+                      </a>
+
+
+                    </h1>
+
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+
+
+
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+
+                        <time title="创建时间：2018-08-27 01:08:29" itemprop="dateCreated datePublished" datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
+
+
+
+
+
+
+
+                        <span class="post-meta-divider">|</span>
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-check-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">更新于</span>
+
+                        <time title="修改时间：2017-08-09 00:12:00" itemprop="dateModified" datetime="2017-08-09T00:12:00+08:00">2017-08-09</time>
+
+
+                      </span>
+
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">分类于</span>
+
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/"
+                            itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+
+
+
+                      </span>
+
+
+
+
+
+
+
+
+                      <span id="/2018/08/27/设计思路/" class="leancloud_visitors" data-flag-title="3D云标签/3D旋转链接设计思路（简单实现）">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">阅读次数：</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+
+
+
+
+
+
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <p><img src="http://oquq74tfk.bkt.clouddn.com/17-8-8/94642384.jpg" alt=""><br>
+                      <!--noindex-->
+                      <div class="post-button text-center">
+                        <a class="btn" href="/2018/08/27/设计思路/#more" rel="contents">
+                          阅读全文 &raquo;
+                        </a>
+                      </div>
+                      <!--/noindex-->
+
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
+                </div>
+
+
+
+              </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="Genluo">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="Genluo">
+                  </span>
+
+
+                  <header class="post-header">
+
+
+
+                    <h1 class="post-title" itemprop="name headline">
+
+                      <a class="post-title-link" href="/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/" itemprop="url">
+                        浏览器同源策略及规避Ajax中jsonp跨域解决方案
+                      </a>
+
+
+                    </h1>
+
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+
+
+
+
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">发表于</span>
+
+
+
+
+
+
+                        <time title="创建时间：2018-08-27 01:08:29 / 修改时间：01:25:45" itemprop="dateCreated datePublished"
+                          datetime="2018-08-27T01:08:29+08:00">2018-08-27</time>
+
+
+
+
+
+
+
+                      </span>
+
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">分类于</span>
+
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/"
+                            itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+
+
+
+                      </span>
+
+
+
+
+
+
+
+
+                      <span id="/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/" class="leancloud_visitors" data-flag-title="浏览器同源策略及规避Ajax中jsonp跨域解决方案">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">阅读次数：</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+
+
+
+
+
+
+
+                    </div>
+                  </header>
+
+
+
+
+
+                  <div class="post-body" itemprop="articleBody">
+
+
+
+
+
+
+                    <p>了解下浏览器的同源策略，并且理解下jsonp的跨域解决方案</p>
+                    <!--noindex-->
+                    <div class="post-button text-center">
+                      <a class="btn" href="/2018/08/27/浏览器同源策略及规避Ajax中jsonp跨域解决方案/#more" rel="contents">
+                        阅读全文 &raquo;
+                      </a>
+                    </div>
+                    <!--/noindex-->
+
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <footer class="post-footer">
+
+
+
+
+
+
+
+
+                    <div class="post-eof"></div>
+
+                  </footer>
+                </div>
+
+
+
+              </article>
+
+
+
+            </section>
+
+
+            <nav class="pagination">
+              <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number"
+                href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"
+                  aria-label="下一页"></i></a>
+            </nav>
+
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+          </div>
+        </div>
+
+        <aside id="sidebar" class="sidebar">
+
+          <div class="sidebar-inner">
+
+
+
+
+
+            <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+              <div class="site-overview">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+                  <img class="site-author-image" itemprop="image" src="http://oquq74tfk.bkt.clouddn.com/18-8-26/98575859.jpg"
+                    alt="Genluo" />
+
+                  <p class="site-author-name" itemprop="name">Genluo</p>
+                  <p class="site-description motion-element" itemprop="description"></p>
+                </div>
+
+
+                <nav class="site-state motion-element">
+
+                  <div class="site-state-item site-state-posts">
+
+                    <a href="/archives">
+
+                      <span class="site-state-item-count">25</span>
+                      <span class="site-state-item-name">日志</span>
+                    </a>
+                  </div>
+
+
+
+
+
+                  <div class="site-state-item site-state-categories">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">分类</span>
-                  
-                </div>
-              
 
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
+                  </div>
+
+
+
+
+
+                  <div class="site-state-item site-state-tags">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">标签</span>
-                  
+
+                  </div>
+
+                </nav>
+
+
+
+
+
+                <div class="links-of-author motion-element">
+
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/vivatoviva" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+
+                  </span>
+
+                  <span class="links-of-author-item">
+                    <a href="1461304646@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+
+                  </span>
+
                 </div>
-              
-            </nav>
-          
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/vivatoviva" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="1461304646@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+            </section>
+
+
+
+
+
+          </div>
+        </aside>
+
+
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Genluo</span>
-
-  
-
-  
-</div>
+          <span class="with-love" id="animate">
+            <i class="fa fa-user"></i>
+          </span>
+          <span class="author" itemprop="copyrightHolder">Genluo</span>
 
 
+
+
+        </div>
 
 
 
@@ -2329,7 +2381,6 @@
 
 
 
-        
 
 
 
@@ -2338,39 +2389,40 @@
 
 
 
-  <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1274562140&web_id=1274562140" language="JavaScript"></script>
-  </div>
 
 
 
-        
+        <div style="display: none;">
+          <script src="//s95.cnzz.com/z_stat.php?id=1274562140&web_id=1274562140" language="JavaScript"></script>
+        </div>
+
+
+
+
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
 
-    
-	
-    
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
 
-    
+    </div>
+
+
+
+
+
+
+
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
 
 
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+  </script>
 
 
 
@@ -2395,23 +2447,25 @@
 
 
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
 
 
-  
+
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+
+
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
 
 
   <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
@@ -2420,8 +2474,8 @@
 
 
 
-  
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/affix.js?v=6.4.0"></script>
@@ -2430,20 +2484,15 @@
 
 
 
-  
 
-  
+
+
 
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
 
 
 
-  
-
-
-
-  
 
 
 
@@ -2454,7 +2503,12 @@
 
 
 
-  
+
+
+
+
+
+
 
   <script type="text/javascript">
     // Popup Window;
@@ -2492,7 +2546,7 @@
     }
 
     // search function;
-    var searchFunc = function(path, search_id, content_id) {
+    var searchFunc = function (path, search_id, content_id) {
       'use strict';
 
       // start loading animation
@@ -2505,26 +2559,26 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
-      
+
 
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
         async: true,
-        success: function(res) {
+        success: function (res) {
           // get the contents from search data
           isfetched = true;
           $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
+          var datas = isXml ? $("entry", res).map(function () {
             return {
               title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
+              content: $("content", this).text(),
+              url: $("url", this).text()
             };
           }).get() : res;
           var input = document.getElementById(search_id);
           var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
+          var inputEventFunction = function () {
             var searchText = input.value.trim().toLowerCase();
             var keywords = searchText.split(/[\s\-]+/);
             if (keywords.length > 1) {
@@ -2533,40 +2587,47 @@
             var resultItems = [];
             if (searchText.length > 0) {
               // perform local searching
-              datas.forEach(function(data) {
+              datas.forEach(function (data) {
                 var isMatch = false;
                 var hitCount = 0;
                 var searchTextCount = 0;
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
+                var content = data.content.trim().replace(/<[^>]+>/g, "");
+
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
+                if (title != '') {
+                  keywords.forEach(function (keyword) {
                     function getIndexByWord(word, text, caseSensitive) {
                       var wordLen = word.length;
                       if (wordLen === 0) {
                         return [];
                       }
-                      var startPosition = 0, position = [], index = [];
+                      var startPosition = 0,
+                        position = [],
+                        index = [];
                       if (!caseSensitive) {
                         text = text.toLowerCase();
                         word = word.toLowerCase();
                       }
                       while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
+                        index.push({
+                          position: position,
+                          word: word
+                        });
                         startPosition = position + wordLen;
                       }
                       return index;
                     }
 
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase,
+                      false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase,
+                      false));
                   });
                   if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
                     isMatch = true;
@@ -2601,7 +2662,10 @@
                       if (word === searchText) {
                         searchTextCountInSlice++;
                       }
-                      hits.push({position: position, length: word.length});
+                      hits.push({
+                        position: position,
+                        length: word.length
+                      });
                       var wordEnd = position + word.length;
 
                       // move to next position of hit
@@ -2640,13 +2704,13 @@
                     // cut out 100 characters
                     var start = position - 20;
                     var end = position + 80;
-                    if(start < 0){
+                    if (start < 0) {
                       start = 0;
                     }
                     if (end < position + word.length) {
                       end = position + word.length;
                     }
-                    if(end > content.length){
+                    if (end > content.length) {
                       end = content.length;
                     }
                     slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
@@ -2679,7 +2743,8 @@
                     slice.hits.forEach(function (hit) {
                       result += text.substring(prevEnd, hit.position);
                       var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) +
+                        '</b>';
                       prevEnd = end;
                     });
                     result += text.substring(prevEnd, slice.end);
@@ -2689,9 +2754,11 @@
                   var resultItem = '';
 
                   if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" +
+                      highlightKeyword(title, slicesOfTitle[0]) + "</a>";
                   } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title +
+                      "</a>";
                   }
 
                   slicesOfContent.forEach(function (slice) {
@@ -2754,7 +2821,7 @@
     }
 
     // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
+    $('.popup-trigger').click(function (e) {
       e.stopPropagation();
       if (isfetched === false) {
         searchFunc(path, 'local-search-input', 'local-search-result');
@@ -2764,7 +2831,7 @@
     });
 
     $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
+    $('.popup').click(function (e) {
       e.stopPropagation();
     });
     $(document).on('keyup', function (event) {
@@ -2780,21 +2847,28 @@
 
 
 
-  
 
-  
+
+
   <script>
-    
     function showTime(Counter) {
       var entries = [];
       var $visitors = $(".leancloud_visitors");
 
       $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
+        entries.push($(this).attr("id").trim());
       });
 
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
-        .done(function ({ results }) {
+      Counter('get', '/classes/Counter', {
+          where: JSON.stringify({
+            url: {
+              "$in": entries
+            }
+          })
+        })
+        .done(function ({
+          results
+        }) {
           var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
 
           if (results.length === 0) {
@@ -2810,24 +2884,28 @@
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
           }
-          for(var i = 0; i < entries.length; i++) {
+          for (var i = 0; i < entries.length; i++) {
             var url = entries[i];
             var element = document.getElementById(url);
             var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
+            if (countSpan.text() == '') {
               countSpan.text(0);
             }
           }
         })
-        .fail(function ({ responseJSON }) {
+        .fail(function ({
+          responseJSON
+        }) {
           console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
         });
     }
-    
 
-    $(function() {
+
+    $(function () {
       $.get('https://app-router.leancloud.cn/2/route?appId=' + "ejARfLJyRPie3F2fgmhWiqhb-gzGzoHsz")
-        .done(function ({ api_server }) {
+        .done(function ({
+          api_server
+        }) {
           var Counter = function (method, url, data) {
             return $.ajax({
               method: method,
@@ -2840,36 +2918,37 @@
               data: data,
             });
           };
-          
+
           if ($('.post-title-link').length >= 1) {
             showTime(Counter);
           }
-          
+
         })
     });
   </script>
 
 
 
-  
 
-  
 
-  
 
-  
-  
 
-  
 
-  
 
-  
 
-  
 
-  
+
+
+
+
+
+
+
+
+
+
 
 
 </body>
+
 </html>
