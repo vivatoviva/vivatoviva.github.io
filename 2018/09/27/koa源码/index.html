@@ -108,19 +108,19 @@
 
 
 
-  <meta name="description" content="title: koa源码categories: 源码 这个是自己学习的第一份源码，后面抽时间去多看看别人写的npm包，提升自己的各方面能力， 这次就深入学习koa的源码，对于后面学习eggjs的设计、或者自己封装一些东西的时候也会有一定的帮助。">
-<meta name="keywords" content="vivatoviva">
+  <meta name="description" content="这个是自己学习的第一份源码，后面抽时间去多看看别人写的npm包，提升自己的各方面能力， 这次就深入学习koa的源码，对于后面学习eggjs的设计、或者自己封装一些东西的时候也会有一定的帮助。">
+<meta name="keywords" content="koa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Genluo">
+<meta property="og:title" content="koa源码">
 <meta property="og:url" content="http://blogoog.com/2018/09/27/koa源码/index.html">
 <meta property="og:site_name" content="Genluo">
-<meta property="og:description" content="title: koa源码categories: 源码 这个是自己学习的第一份源码，后面抽时间去多看看别人写的npm包，提升自己的各方面能力， 这次就深入学习koa的源码，对于后面学习eggjs的设计、或者自己封装一些东西的时候也会有一定的帮助。">
+<meta property="og:description" content="这个是自己学习的第一份源码，后面抽时间去多看看别人写的npm包，提升自己的各方面能力， 这次就深入学习koa的源码，对于后面学习eggjs的设计、或者自己封装一些东西的时候也会有一定的帮助。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-9-26/55093382.jpg">
-<meta property="og:updated_time" content="2018-09-27T07:06:54.750Z">
+<meta property="og:updated_time" content="2018-09-27T07:12:20.505Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Genluo">
-<meta name="twitter:description" content="title: koa源码categories: 源码 这个是自己学习的第一份源码，后面抽时间去多看看别人写的npm包，提升自己的各方面能力， 这次就深入学习koa的源码，对于后面学习eggjs的设计、或者自己封装一些东西的时候也会有一定的帮助。">
+<meta name="twitter:title" content="koa源码">
+<meta name="twitter:description" content="这个是自己学习的第一份源码，后面抽时间去多看看别人写的npm包，提升自己的各方面能力， 这次就深入学习koa的源码，对于后面学习eggjs的设计、或者自己封装一些东西的时候也会有一定的帮助。">
 <meta name="twitter:image" content="http://oquq74tfk.bkt.clouddn.com/18-9-26/55093382.jpg">
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title> | Genluo</title>
+  <title>koa源码 | Genluo</title>
   
 
 
@@ -339,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">koa源码
               
             
           </h1>
@@ -364,7 +364,7 @@
                 
               
 
-              <time title="创建时间：2018-09-27 15:06:40 / 修改时间：15:06:54" itemprop="dateCreated datePublished" datetime="2018-09-27T15:06:40+08:00">2018-09-27</time>
+              <time title="创建时间：2018-09-27 15:12:15 / 修改时间：15:12:20" itemprop="dateCreated datePublished" datetime="2018-09-27T15:12:15+08:00">2018-09-27</time>
             
             
             
@@ -375,6 +375,24 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/源码/" itemprop="url" rel="index"><span itemprop="name">源码</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -382,7 +400,7 @@
 
           
           
-             <span id="/2018/09/27/koa源码/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2018/09/27/koa源码/" class="leancloud_visitors" data-flag-title="koa源码">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -413,8 +431,7 @@
       
 
       
-        <p>title: koa源码<br>categories: 源码</p>
-<p>这个是自己学习的第一份源码，后面抽时间去多看看别人写的npm包，提升自己的各方面能力， 这次就深入学习koa的源码，对于后面学习eggjs的设计、或者自己封装一些东西的时候也会有一定的帮助。</p>
+        <p>这个是自己学习的第一份源码，后面抽时间去多看看别人写的npm包，提升自己的各方面能力， 这次就深入学习koa的源码，对于后面学习eggjs的设计、或者自己封装一些东西的时候也会有一定的帮助。</p>
 <a id="more"></a>
 <h3 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h3><p>根据自己的所学，可知整体架构主要分为三部分，context、request、response，context为上下文，连接request和response，相关分析如下：</p>
 <h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const koa = require(&apos;koa&apos;)</span><br><span class="line">const app = new koa()</span><br><span class="line"></span><br><span class="line">app.use(function (ctx, next) &#123;</span><br><span class="line">return ctx.body = &apos;xianzai&apos;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(3000)</span><br></pre></td></tr></table></figure>
@@ -461,6 +478,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/koa/" rel="tag"># koa</a>
+          
+        </div>
       
 
       
@@ -590,7 +613,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -619,7 +644,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
