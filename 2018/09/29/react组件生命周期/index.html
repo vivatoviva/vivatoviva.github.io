@@ -108,27 +108,27 @@
 
 
 
-  <meta name="description" content="最近做项目遇见权限控制，主要使用了缓存来记录用户权限，后面有时间整理下了前端的几种存储方式，主要有 cookie、storage">
-<meta name="keywords" content="vivatoviva">
+  <meta name="description" content="最近在做博客的时候遇见一个问题，我要使用一个Modal组件，按照正常的流程就是，编写模块，然后使用react中的ReactDOM.createPortal(child, container)将组件插入到body下面，代码如下：">
+<meta name="keywords" content="Nextjs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端的存储三种方式">
-<meta property="og:url" content="http://blogoog.com/2018/08/27/前端存储md/index.html">
+<meta property="og:title" content="react组件生命周期">
+<meta property="og:url" content="http://blogoog.com/2018/09/29/react组件生命周期/index.html">
 <meta property="og:site_name" content="Genluo">
-<meta property="og:description" content="最近做项目遇见权限控制，主要使用了缓存来记录用户权限，后面有时间整理下了前端的几种存储方式，主要有 cookie、storage">
+<meta property="og:description" content="最近在做博客的时候遇见一个问题，我要使用一个Modal组件，按照正常的流程就是，编写模块，然后使用react中的ReactDOM.createPortal(child, container)将组件插入到body下面，代码如下：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-8-21/2456233.jpg">
-<meta property="og:updated_time" content="2018-08-26T17:24:35.654Z">
+<meta property="og:image" content="http://oquq74tfk.bkt.clouddn.com/18-9-28/13395311.jpg">
+<meta property="og:updated_time" content="2018-09-28T16:03:34.595Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端的存储三种方式">
-<meta name="twitter:description" content="最近做项目遇见权限控制，主要使用了缓存来记录用户权限，后面有时间整理下了前端的几种存储方式，主要有 cookie、storage">
-<meta name="twitter:image" content="http://oquq74tfk.bkt.clouddn.com/18-8-21/2456233.jpg">
+<meta name="twitter:title" content="react组件生命周期">
+<meta name="twitter:description" content="最近在做博客的时候遇见一个问题，我要使用一个Modal组件，按照正常的流程就是，编写模块，然后使用react中的ReactDOM.createPortal(child, container)将组件插入到body下面，代码如下：">
+<meta name="twitter:image" content="http://oquq74tfk.bkt.clouddn.com/18-9-28/13395311.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blogoog.com/2018/08/27/前端存储md/"/>
+  <link rel="canonical" href="http://blogoog.com/2018/09/29/react组件生命周期/"/>
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>前端的存储三种方式 | Genluo</title>
+  <title>react组件生命周期 | Genluo</title>
   
 
 
@@ -322,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/08/27/前端存储md/">
+    <link itemprop="mainEntityOfPage" href="http://blogoog.com/2018/09/29/react组件生命周期/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Genluo">
@@ -339,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">前端的存储三种方式
+          <h1 class="post-title" itemprop="name headline">react组件生命周期
               
             
           </h1>
@@ -364,7 +364,7 @@
                 
               
 
-              <time title="创建时间：2018-08-27 01:43:00 / 修改时间：01:24:35" itemprop="dateCreated datePublished" datetime="2018-08-27T01:43:00+08:00">2018-08-27</time>
+              <time title="创建时间：2018-09-29 00:03:28 / 修改时间：00:03:34" itemprop="dateCreated datePublished" datetime="2018-09-29T00:03:28+08:00">2018-09-29</time>
             
             
             
@@ -386,7 +386,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a></span>
 
                 
                 
@@ -400,7 +400,7 @@
 
           
           
-             <span id="/2018/08/27/前端存储md/" class="leancloud_visitors" data-flag-title="前端的存储三种方式">
+             <span id="/2018/09/29/react组件生命周期/" class="leancloud_visitors" data-flag-title="react组件生命周期">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -431,73 +431,52 @@
       
 
       
-        <p>最近做项目遇见权限控制，主要使用了缓存来记录用户权限，后面有时间整理下了前端的几种存储方式，主要有 cookie、storage</p>
+        <p>最近在做博客的时候遇见一个问题，我要使用一个Modal组件，按照正常的流程就是，编写模块，然后使用react中的<code>ReactDOM.createPortal(child, container)</code>将组件插入到body下面，代码如下：</p>
 <a id="more"></a>
-<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><h4 id="属性选项"><a href="#属性选项" class="headerlink" title="属性选项"></a>属性选项</h4><ul>
-<li>expires和Max-Age</li>
-</ul>
-<blockquote>
-<p>cookie失效时间，为GMT格式，通过new Date().toUTCString()获取，如果没有显式设置，则称之为会话cookie，在浏览器关闭的时候清除</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class NewPortal extends React.Component &#123;</span><br><span class="line"></span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; children &#125; = this.props;</span><br><span class="line">    const appRoot = document.body;</span><br><span class="line">    return ReactDOM.createPortal(</span><br><span class="line">      children,</span><br><span class="line">      appRoot,</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是我的博客进行同构化处理，如果在服务前进行渲染则是不能获取document对象，服务器端会直接报document 为undefined，所以就产生了这个问题<br>对于这个问题，我认为有两种方法，一种是借助nextjs提供的document组件进行处理，这时候就需要了解nextjs，在服务器端怎么渲染,另一种就是通过react的生命周期函数来尝试解决这个问题</p>
+<h3 id="最简单的方法"><a href="#最简单的方法" class="headerlink" title="最简单的方法"></a>最简单的方法</h3><p>因为这个modal是点击才出现，所以有一种的方法就是：因为初始渲染的时候visible是false，所以可以通过visible来第一次渲染避免渲染Modal，这样就不会涉及到document的问题了，代码如下;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    visible &amp;&amp; &lt;Modal</span><br><span class="line">      onOK=&#123;this.handleModalOk&#125;</span><br><span class="line">      onCancel=&#123;this.handleModalCancel&#125;</span><br><span class="line">      visible=&#123;visible&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;Search</span><br><span class="line">        onClose=&#123;this.handleModalCancel&#125;</span><br><span class="line">      &gt;&lt;/Search&gt;</span><br><span class="line">      &lt;div className=&quot;list&quot;&gt;</span><br><span class="line">        &lt;List </span><br><span class="line">          dataSource=&#123;[&apos;xian&apos;,&apos;zai&apos;, &apos;xian&apos;, &apos;baijin&apos;, &apos;jinxing&apos;]&#125;</span><br><span class="line">          renderItem=&#123;item =&gt;</span><br><span class="line">            &lt;List.Item</span><br><span class="line">              title=&#123;item&#125;</span><br><span class="line">              content=&quot;xiand afsdfsdhfkjsdh&quot;</span><br><span class="line">            /&gt;</span><br><span class="line">            &#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/Modal&gt;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Nextjs方式的解决方式"><a href="#Nextjs方式的解决方式" class="headerlink" title="Nextjs方式的解决方式"></a>Nextjs方式的解决方式</h2><p>虽然上面第一次测试就完成了想要的功能，但是我要继续试下，看下自己的其他几个猜想能不能实现？经过测试，发现_document.js是为了生成页面模板，压根不会在浏览器中执行，所以其中的相关组价就没有任何价值，所以这种法法直接排除掉</p>
+<h2 id="react生命周期函数"><a href="#react生命周期函数" class="headerlink" title="react生命周期函数"></a>react生命周期函数</h2><p>这次就做个总结，并且解决遇见的这个问题</p>
+<p><img src="http://oquq74tfk.bkt.clouddn.com/18-9-28/13395311.jpg" alt=""></p>
+<p>根据上图可知，Nextjs在进行服务器端进行渲染的时候，只会执行Mounting阶段，在Mounting阶段如果调用document将会报document为undefined，所以整体来说，可以将组件的生命周期分为Mounting（装载阶段） updating（更新阶段）、Unmounting（卸载阶段）等几部分。这其中有几个比较特殊生命周期函数</p>
 <ul>
-<li>domain和path</li>
+<li>static getDerivedStateFromProps</li>
+<li>getSnapshotBeforeUpdate</li>
+<li>shouldComponentUpdate</li>
 </ul>
-<blockquote>
-<p>domain为域名，path为路径，两者加起来构成url，domain和path一起限制cookie能被那些url访问，首先判断的是domain，如果没有设置这两个值，将会使用默认值，domain设置为该cookie的网页所在的域名，path默认为该cookie所在的目录</p>
+<h3 id="static-getDerivedStateFromProps"><a href="#static-getDerivedStateFromProps" class="headerlink" title="static getDerivedStateFromProps"></a>static getDerivedStateFromProps</h3><blockquote>
+<p>static getDerivedStateFromProps(nextProps, prevState)</p>
 </blockquote>
+<p>一个静态方法，所以不能在这个函数里面使用this，这个函数有两个参数nextProps和prevState，分别指接收到的新参数和当前的state对象，这个函数会返回一个对象用来更新当前的state对象，如果不需要更新可以返回null,所以通过props更新组件的生命周期尽量在这个函数中进行更新。</p>
+<h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><p>返回类型通常有以下几种</p>
 <ul>
-<li>secure</li>
+<li>原生的DOM</li>
+<li>React组件</li>
+<li>Fragment（片段）</li>
+<li>Portals（插槽）</li>
+<li>字符串和数字，被渲染成text节点</li>
+<li>Boolean和null，不会渲染任何东西</li>
 </ul>
-<blockquote>
-<p>用来设置cookie只有在确定的安全请求才能发出去，当请求是https或者其他安全协议的时候，包含secure的请求才能发送至服务器，如果想在客户端通过js设置secure的cookie的时候，必须保证网页在https的协议下，在http协议的网页是不能设置成功的</p>
+<h3 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h3><blockquote>
+<p>shouldComponentUpdate(nextProps, nextState)</p>
 </blockquote>
-<ul>
-<li>httpOnly</li>
+<p>有两个参数nextProps和nextState，表示新的属性和变化之后的state，返回一个布尔值，true表示会重新触发渲染，false表示不会触发渲染。</p>
+<h3 id="getSnapshotBeforeUpdate"><a href="#getSnapshotBeforeUpdate" class="headerlink" title="getSnapshotBeforeUpdate"></a>getSnapshotBeforeUpdate</h3><blockquote>
+<p>getSnapshotBeforeUpdate(prevProps, prevState)</p>
+</blockquote>
+<p>这个方法在render之后，componentDidUpdate之前调用，有两个参数prevProps和prevState，表示之前的属性和之前的state，这个函数有一个返回值，会作为第三个参数传给componentDidUpdate，如果你不想要返回值，请返回null，不写的话控制台会有警告<br>并且，还有这个方法一定要和componentDidUpdate一起使用，否则控制台也会有警告</p>
+<h3 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate"></a>componentDidUpdate</h3><blockquote>
+<p>componentDidUpdate(prevProps, prevState, snapshot)</p>
+</blockquote>
+<p>该方法在getSnapshotBeforeUpdate方法之后被调用，有三个参数prevProps，prevState，snapshot，表示之前的props，之前的state，和snapshot。第三个参数是getSnapshotBeforeUpdate返回的</p>
+<h3 id="通过生命周期函数解决前面遇见的问题"><a href="#通过生命周期函数解决前面遇见的问题" class="headerlink" title="通过生命周期函数解决前面遇见的问题"></a>通过生命周期函数解决前面遇见的问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class NewPortal extends React.Component &#123;</span><br><span class="line"></span><br><span class="line">  static getDerivedStateFromProps(nextProps, prevState) &#123;</span><br><span class="line">    if(nextProps.visible) &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        root: document.body</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;</span><br><span class="line">        root: null,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; children &#125; = this.props;</span><br><span class="line">    const &#123; root &#125; = this.state;</span><br><span class="line"></span><br><span class="line">    return root &amp;&amp; ReactDOM.createPortal(</span><br><span class="line">      children,</span><br><span class="line">      root,</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当visible为false，不进行渲染，当visible为true的时候则进行渲染，避免进行渲染的方法和前面提到的解决方法大致相同，也可以直接将root替换成document.body等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class NewPortal extends React.Component &#123;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; children &#125; = this.props;</span><br><span class="line">    return document &amp;&amp; ReactDOM.createPortal(</span><br><span class="line">      children,</span><br><span class="line">      document.body,</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>学习了一波react的生命周期函数，我承认将上面的问题复杂化，并且最终解决上面的问题也没有用到生命周期来解决，但是也学到了一波知识生命周期的钩子函数</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://juejin.im/post/5b6f1800f265da282d45a79a#heading-13" target="_blank" rel="noopener">react生命周期</a></li>
 </ul>
-<blockquote>
-<p>这个设置是设置的cookie能否通过js进行访问，这个设置只能在服务器端进行设置，为了保证安全，可以有效防止xss攻击</p>
-</blockquote>
-<h4 id="如何设置cookie？"><a href="#如何设置cookie？" class="headerlink" title="如何设置cookie？"></a>如何设置cookie？</h4><h5 id="服务器端进行设置"><a href="#服务器端进行设置" class="headerlink" title="服务器端进行设置"></a>服务器端进行设置</h5><blockquote>
-<p>服务通过response header 中的Set-Cookie进行设置，如果需要设置多个cookie，需要分别设置多个Set-Cookie,通过服务器可以设置 expires、domain、path、secure、HttpOnly</p>
-</blockquote>
-<h5 id="客户端进行设置"><a href="#客户端进行设置" class="headerlink" title="客户端进行设置"></a>客户端进行设置</h5><blockquote>
-<p>通过document.cookie进行设置，同样设置多个cookie需要重复执行document.cookie，通过js可以设置 expires、domain、path、secure（需要在https才可设置成功）</p>
-</blockquote>
-<p><code>document.cookie=&quot;age=12; expires=Thu, 26 Feb 2116 11:50:25 GMT; domain=sankuai.com; path=/&quot;;</code></p>
-<h4 id="cookie进行编码"><a href="#cookie进行编码" class="headerlink" title="cookie进行编码"></a>cookie进行编码</h4><blockquote>
-<p>cookie其实是个字符串，但这个字符串中逗号、分号、空格被当做了特殊符号。所以当cookie的 key 和 value 中含有这3个特殊字符时，需要对其进行额外编码，一般会用escape进行编码，读取时用unescape进行解码；可以尝试escape(‘哈哈，genluo’)输出什么</p>
-</blockquote>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ul>
-<li>只有当domain、path、name都相同的cookie才能覆盖</li>
-<li>domain设置带点的时候，任何 subdomain 都可以访问，包括父 domain，当不带点的时候，只有完全一样的域名才能访问</li>
-<li>当通过ip进行访问的时候，domain为当前ip</li>
-</ul>
-<h1 id="locaStorage"><a href="#locaStorage" class="headerlink" title="locaStorage"></a>locaStorage</h1><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
-<li>生命周期：持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。</li>
-<li>存储的信息在同一域中是共享的。</li>
-<li>当本页操作（新增、修改、删除）了localStorage的时候，本页面不会触发storage事件,但是别的页面会触发storage事件。</li>
-<li>大小：据说是5M（跟浏览器厂商有关系）</li>
-<li>在非IE下的浏览中可以本地打开。IE浏览器要在服务器中打开。</li>
-<li>localStorage本质上是对字符串的读取，如果存储内容多的话会消耗内存空间，会导致页面变卡<br>  localStorage受同源策略的限制</li>
-</ul>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>window.localStorage.setItem(key, value)</li>
-<li>window.localStorage.getItem(key,value)</li>
-<li>window.localStorage.removeItem(key)</li>
-<li>window.localStorage.clear()</li>
-<li>window.localStorage 遍历可以使用</li>
-</ul>
-<h4 id="事件storage"><a href="#事件storage" class="headerlink" title="事件storage"></a>事件storage</h4><p>当storage发生改变的时候进行触发，事件的回调函数中有一个参数是event，提供了一些实用属性，例如key、oldValue、newValue、uurl/uri</p>
-<h1 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h1><h4 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h4><blockquote>
-<p>用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储。也就是说只要这个浏览器窗口没有关闭，即使刷新页面或进入同源另一页面，数据仍然存在。关闭窗口后，sessionStorage即被销毁，或者在新窗口打开同源的另一个页面，sessionStorage也是没有的。</p>
-</blockquote>
-<h4 id="共享"><a href="#共享" class="headerlink" title="共享"></a>共享</h4><p>比localStorage更加严格，不仅要求协议、主机名、端口外，还要求在同一窗口（也就是浏览器的标签页）下</p>
-<p><a href="https://segmentfault.com/a/1190000012578794" target="_blank" rel="noopener">sf.gg总结的前端发存储</a></p>
-<h1 id="其他的几种存储（不常用）"><a href="#其他的几种存储（不常用）" class="headerlink" title="其他的几种存储（不常用）"></a>其他的几种存储（不常用）</h1><ul>
-<li>Web Sql Database<br>因为web标准已经放弃此种方式，所以不做深入讨论</li>
-<li>indexedDB<br><a href="https://juejin.im/post/5b09a641f265da0dcd0b674f" target="_blank" rel="noopener">indexDB 掘金</a><br><a href="https://juejin.im/post/59013d2c0ce46300614ebe70" target="_blank" rel="noopener">html5 进阶 - indexedDB</a></li>
-</ul>
-<p><img src="http://oquq74tfk.bkt.clouddn.com/18-8-21/2456233.jpg" alt=""></p>
 
       
     </div>
@@ -516,6 +495,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Nextjs/" rel="tag"># Nextjs</a>
+          
+        </div>
+      
 
       
       
@@ -525,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/27/toc- 记录生活（一）/" rel="next" title="生活随笔">
-                <i class="fa fa-chevron-left"></i> 生活随笔
+              <a href="/2018/09/27/koa源码/" rel="next" title="koa源码">
+                <i class="fa fa-chevron-left"></i> koa源码
               </a>
             
           </div>
@@ -534,10 +519,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/28/性能优化之缓存/" rel="prev" title="web性能优化之缓存">
-                web性能优化之缓存 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -735,7 +716,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cookie"><span class="nav-number">1.</span> <span class="nav-text">cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#属性选项"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">属性选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何设置cookie？"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">如何设置cookie？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#服务器端进行设置"><span class="nav-number">1.0.0.2.1.</span> <span class="nav-text">服务器端进行设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#客户端进行设置"><span class="nav-number">1.0.0.2.2.</span> <span class="nav-text">客户端进行设置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie进行编码"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">cookie进行编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#locaStorage"><span class="nav-number">2.</span> <span class="nav-text">locaStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件storage"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">事件storage</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sessionStorage"><span class="nav-number">3.</span> <span class="nav-text">sessionStorage</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点-1"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#共享"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">共享</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他的几种存储（不常用）"><span class="nav-number">4.</span> <span class="nav-text">其他的几种存储（不常用）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最简单的方法"><span class="nav-number">1.</span> <span class="nav-text">最简单的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nextjs方式的解决方式"><span class="nav-number"></span> <span class="nav-text">Nextjs方式的解决方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react生命周期函数"><span class="nav-number"></span> <span class="nav-text">react生命周期函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#static-getDerivedStateFromProps"><span class="nav-number">1.</span> <span class="nav-text">static getDerivedStateFromProps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#render"><span class="nav-number">2.</span> <span class="nav-text">render</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shouldComponentUpdate"><span class="nav-number">3.</span> <span class="nav-text">shouldComponentUpdate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getSnapshotBeforeUpdate"><span class="nav-number">4.</span> <span class="nav-text">getSnapshotBeforeUpdate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#componentDidUpdate"><span class="nav-number">5.</span> <span class="nav-text">componentDidUpdate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过生命周期函数解决前面遇见的问题"><span class="nav-number">6.</span> <span class="nav-text">通过生命周期函数解决前面遇见的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number"></span> <span class="nav-text">参考</span></a></div>
             
 
           </div>
